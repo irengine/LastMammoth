@@ -1,0 +1,2 @@
+module Yat::SecurityHelper
+end
