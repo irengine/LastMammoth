@@ -1,0 +1,60 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+zh:
+  activerecord:
+    models:
+      employee: "员工"
+      resource: "参数"
+      group: "组织"
+      user: "用户"
+      UnitCompany: "总公司"
+      UnitBranch: "分公司"
+      UnitGroup: "部门/中队"
+      UnitTeam: "驻点"
+    attributes:
+      employee:
+        name: "姓名"
+        gender_id: "性别"
+        birthdate: "出生年月"
+        id_card_number: "身份证号"
+        license_number: "从业号"
+        employee_number: "工号"
+        height: "身高"
+        phone_number: "电话"
+        mobile_number: "手机"
+        political_status_id: "政治面貌"
+        educational_attainments_id: "文化程度"
+        person_type_id: "人员性质"
+        is_demobilized: "复员军人"
+        permanent_residence: "户口所属区"
+        employee_type_id: "用工性质"
+        home_address: "家庭住址"
+        fund_type_id: "缴金类型"
+        fund_date: "缴金日期"
+        fund_address_id: "缴金街道"
+        training_status_id: "培训情况"
+        remarks: "备注"
+        age: "年龄"
+        min_age: "年龄 (>=)"
+        max_age: "年龄 (<)"
+      resource:
+        scope: "范围"
+        key: "键"
+        value: "值"
+        mode: "状态"
+      group:
+        name: "名称"
+        contacts: "联系人"
+        address: "地址"
+        lv: "类型"
+        type: "类型"
+        parent_id: "上级组织"
+      user:
+        name: "用户名"
+        full_name: "姓名"
+        password: "密码"
+        password_confirmation: "重复密码"
+        email: "电子邮件"
+        roles: "角色"
+        default_group_id: "所属公司"

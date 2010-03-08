@@ -1,0 +1,3 @@
+class UnitTeam < Group
+
+end

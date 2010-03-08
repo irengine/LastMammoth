@@ -1,0 +1,141 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+zh:
+  Mammoth: "Mammoth V3"
+  
+  # Resource type/scope
+  gender: "性别"
+  political_status: "政治面貌"
+  educational_attainments: "文化程度"
+  person_type: "人员性质"
+  employee_type: "用工性质"
+  fund_type: "缴金类型"
+  fund_address: "缴金类型"
+  training_status: "培训情况"
+  job_name: "岗位"
+  job_title: "职务"
+  clothes_type: "服装类别"
+  clothes_model: "服装型号"
+
+  # Global string
+  button_Save: "保存"
+  button_Create: "创建"
+  button_Create_Child: "创建子组织"
+  button_Edit: "编辑"
+  button_Delete: "删除"
+  button_Print: "打印"
+  button_Photo: "照片"
+  button_Query: "查询"
+  button_Detail: "详细"
+
+  prompt_Login: "[登录]"
+  prompt_Logout: "[退出]"
+
+  action_Save_Success: "保存成功"
+  action_Save_Failure: "保存失败"
+  action_Delete_Success: "删除成功"
+  action_Delete_Failure: "删除失败"
+
+  # Login form
+  loginform_LoginPrompt: "请输入登录信息"
+  loginform_UserName: "用户名"
+  loginform_UserPassword: "密码"
+  loginform_LoginButton: "登录"
+  loginform_InvalidPassword: "用户名/密码输入错误"
+  loginform_Logout: "已退出登录"
+
+  active_users_form: "在线用户"
+  active_users_form_user_id: "Id"
+  active_users_form_user_name: "用户名"
+
+  roleform: "角色管理"
+  roleform_Update: "角色设置完成"
+
+  userform: "权限管理"
+  userform_Update: "权限设置完成"
+
+  title_new_resource: "设置新代码--[{{name}}]"
+  prompt_new_resource: "请输入新代码"
+  title_edit_resource: "修改设置代码--[{{name}}]"
+  prompt_edit_resource: "请输入代码"
+  title_list_resource: "代码设置列表--{{name}}"
+  prompt_delete_resource: "请确认是否删除代码"
+
+  groups_index: "组织结构列表"
+  groups_full: "组织结构列表"
+  groups_new: "创建组织结构"
+  groups_edit: "修改组织结构"
+  groups_create: "创建组织结构"
+  groups_update: "修改组织结构"
+  prompt_delete_group: "请确认是否删除组织"
+
+  users_index: "用户列表"
+  users_new: "创建用户"
+  users_edit: "修改用户"
+  users_create: "创建用户"
+  users_update: "修改用户"
+  users_change_password: "更换密码"
+  button_ChangePassword: "更换密码"
+  prompt_delete_user: "请确认是否删除用户"
+
+  employees_index: "员工资料列表"
+  employees_search: "员工资料列表"
+  employees_new: "创建员工资料"
+  employees_edit: "修改员工资料"
+  employees_create: "创建员工资料"
+  employees_update: "修改员工资料"
+  employees_photo: "上传员工照片"
+  employees_upload: "上传员工照片"
+
+  site_contracts_index: "驻点列表"
+  button_Contract: "合同"
+
+  button_Cloth: "服装"
+  button_Record: "奖惩"
+  button_Fund: "缴金"
+
+  side_Title: "用户信息"
+  side_User: "[用户]"
+  side_Group: "[所属组织]"
+
+# to be deleted begin
+  title_search_employee: "搜索员工"
+  prompt_search_employee: "请输入员工搜索内容"
+  button_search_employee: "搜索"
+# to be deleted end
+
+  groupfilter_title: "条件:组织机构"
+  groupfilter_branch: "单位"
+  groupfilter_group: "部门/中队"
+  groupfilter_site: "驻点"
+
+  # custom query
+  query_results: "查询结果"
+
+  group_query: "组织机构查询"
+  groups_results: "组织机构查询结果"
+  employee_query: "员工查询"
+  employees_results: "员工查询结果"
+  job_query: "员工查询"
+  jobs_results: "员工查询结果"
+  asset_query: "员工查询"
+  employees_asset: "员工查询结果"
+  employees_query: "员工查询"
+
+  button_Job_Start: "上岗"
+  button_Job_Change: "调岗"
+  button_Job_Idel: "待岗"
+  button_Job_Stop: "离岗"
+
+  jobs_start: "上岗"
+  jobs_change: "调岗"
+  jobs_idel: "待岗"
+  jobs_stop: "离岗"
+
+  # Unit types
+  UnitCompany: "总公司"
+  UnitBranch: "分公司"
+  UnitGroup: "部门/中队"
+  UnitTeam: "驻点"
+  

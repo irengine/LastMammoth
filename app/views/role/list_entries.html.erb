@@ -1,0 +1,32 @@
+<div class="wrap">
+  <h2><%= I18n.t("roleform") %></h2>
+  <div class="editform">
+  <% form_tag :action => "update_entries" do %>
+    <table style="background: #ccc;">
+      <tr>
+        <th>&nbsp;</th>
+        <% for role in @roles %>
+          <th><%= role.name %></th>
+        <% end %>
+      </tr>
+
+      <% for feature in @features %>
+        <tr style="background: <%= cycle("#ffc","white") %>;">
+        <td align="right"><strong><%= feature.name %></strong></td>
+
+        <% for role in @roles %>
+          <td align="center">
+            <%= get_entry(role.id, feature.id) %>
+          </td>
+        <% end %>
+
+      <% end %>
+      <tr>
+        <td class="submit">
+          <%= submit_tag I18n.t("button_Save") %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+  </div>
+</div>

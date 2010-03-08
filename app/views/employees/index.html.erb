@@ -1,0 +1,44 @@
+<div class="wrap">
+  <h2><%= I18n.t(page_title) %></h2>
+  <table class="listform">
+    <tbody>
+      <tr class="head">
+        <th></th>
+        <th><%= tl(:name) %></th>
+        <th><%= tl(:id_card_number) %></th>
+        <th><%= tl(:gender_id) %></th>
+        <th><%= tl(:employee_number) %></th>
+        <th><%= tl(:license_number) %></th>
+        <th><%= tl(:phone_number) %></th>
+        <th><%= tl(:mobile_number) %></th>
+      </tr>
+    </tbody>
+    <tbody>
+      <% i = 0; for employee in @employees; i = i + 1 %>
+        <tr class="alternate">
+          <td><%=h i %></td>
+          <td><%=h employee.name %></td>
+          <td><%=h employee.id_card_number %></td>
+          <td><%=h employee.gender.value %></td>
+          <td><%=h employee.employee_number %></td>
+          <td><%=h employee.license_number %></td>
+          <td><%=h employee.phone_number %></td>
+          <td><%=h employee.mobile_number %></td>
+          <td>
+            <%= link_to I18n.t("button_Print"), {:controller => 'report', :action=> 'register', :id => employee.id}, :popup => true %>
+          </td>
+          <td>
+            <%= link_to I18n.t("button_Photo"), {:controller => 'employees', :action=> 'photo', :id => employee.id}%>
+          </td>
+          <td>
+            <%= link_to I18n.t("button_Edit"), edit_employee_path(employee) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= will_paginate @employees %>
+
+  <%= link_to I18n.t("button_Create"), new_employee_path %>
+</div>

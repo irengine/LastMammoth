@@ -1,0 +1,20 @@
+<div id="new_resource_form" class="editform">
+  <h1><%= I18n.t("title_new_resource", :name => I18n.t(@code_scope)) %></h1>
+  <% form_for(@resource) do |f| %>
+    <fieldset>
+      <legend><%= I18n.t('prompt_new_resource') %></legend>
+      <p>
+        <%= f.label :key, tl(:key) %>
+        <%= f.text_field :key %>
+      </p>
+      <p>
+        <%= f.label :value, tl(:value) %>
+        <%= f.text_field :value %>
+      </p>
+      <p class="submit">
+        <label>&nbsp;</label>
+        <%= f.submit t("button_Save") %>
+      </p>
+    </fieldset>
+  <% end %>
+</div>

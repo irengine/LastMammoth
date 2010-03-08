@@ -1,0 +1,13 @@
+<div class="wrap">
+  <h2><%= I18n.t(page_title) %></h2>
+  <%= error_messages_for :group %>
+  <div class="editform">
+    <% tabular_form_for(@group, :url => { :controller=> "groups", :action => "update" }) do |f| %>
+      <%= f.select :parent_id, @parent_groups.collect {|g| [ g.name, g.id ] } %>
+      <%= f.text_field :name %>
+      <%= f.text_area :contacts, :rows => 5 %>
+      <%= f.text_area :address, :rows => 5 %>
+      <%= f.submit I18n.t("button_Save") %>
+    <% end %>
+  </div>
+</div>

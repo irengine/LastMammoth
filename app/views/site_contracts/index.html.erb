@@ -1,0 +1,32 @@
+<div class="wrap">
+  <h2><%= I18n.t(page_title) %></h2>
+  <table class="listform">
+    <tbody>
+      <tr class="head">
+        <th></th>
+        <th>名称</th>
+        <th>类型</th>
+      </tr>
+    </tbody>
+    <tbody>
+      <% i = 0; for group in @groups; i = i + 1 %>
+        <% next if group.lv.nil? %>
+        <tr class="alternate">
+          <td>
+            <%=h i %>
+          </td>
+          <td>
+            <% (group.lv/2).times{ %>&nbsp;&nbsp;&nbsp;&nbsp<% } %>
+            <%=h group.name %>
+          </td>
+          <td>
+            <%=h Group.get_type(group.lv/2) %>
+          </td>
+          <td>
+            <%= link_to I18n.t("button_Contract"), {:controller => 'site_contracts', :action=> 'show', :site_id => group.id} if group.lv == 6%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

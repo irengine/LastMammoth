@@ -1,0 +1,40 @@
+<div class="wrap">
+  <h2>岗点合同</h2>
+  
+  <%= error_messages_for :site_contract %>
+
+  名称:<%=h @site.name %>
+  联系方式:<%=h @site.contacts %>
+  地址:<%=h @site.address %>
+  <br/><br/>
+    
+  <h3>岗点合同信息</h3>
+  
+  <div class="editform">
+    
+    <% form_for(@site_contract) do |f| %>
+      <table class="editform" width="100%" cellspacing="2" cellpadding="5">
+        <tr>
+          <th scope="row" width="40%"></th>
+          <td width="60%"></td>
+        </tr>
+        <tr>
+          <th scope="row">起始日期</th>
+          <td><%= f.date_select :contract_begin_date %></td>
+        </tr>
+        <tr>
+          <th scope="row">终止日期</th>
+          <td><%= f.date_select :contract_end_date %></td>
+        </tr>
+        <tr>
+          <th scope="row">额定人数</th>
+          <td><%= f.text_field :quantity %></td>
+        </tr>
+      </table>
+      <p class="submit">
+        <%= f.submit "保存" %>
+      </p>
+    <% end %>
+        
+  </div>
+</div>

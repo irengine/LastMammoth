@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Mermaid HR System</title>
+    <%= stylesheet_link_tag "mammoth", :media => "all" %>
+    <%= javascript_include_tag :defaults %>
+  </head>
+  <body>
+    <div id="banner">
+      <%= image_tag("rails.png") %>
+      <%= @page_title || "浦东保安总公司人事信息系统" %>
+    </div>
+    <div id="menu">
+        <%= render :partial => "share/navigator" %>
+    </div>
+    <div id="columns">
+      <div id="side">
+        <% if session[:user_id] %>
+        <%= render :partial => "share/side" %>
+        <% end %>
+      </div>
+      <div id="main">
+        <% if flash[:notice] -%>
+          <div id="notice"><%= flash[:notice] %></div>
+        <% end -%>
+        <%= yield :layout %>
+      </div>
+    </div>
+  </body>
+</html>

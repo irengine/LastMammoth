@@ -1,0 +1,39 @@
+<div class="wrap">
+  <h2>服装领用记录</h2>
+  
+  姓名:<%=h @employee.name %>
+  身份证:<%=h @employee.id_card_number %>
+  工号:<%=h @employee.employee_number %>
+  <br/><br/>
+  
+  <table class="listform">
+    <tbody>
+      <tr class="head">
+        <th>序号</th>
+        <th>领用日期</th>
+        <th>领用类别</th>
+        <th>型号</th>
+        <th>数量</th>
+        <th colspan="3">操作</th>
+      </tr>
+    </tbody>
+    <tbody>
+      <% for employee_clothes in @employee_clothes %>
+        <tr class="alternate"> 
+          <td><%=h employee_clothes.id %></td>
+          <td><%=h employee_clothes.get_date.strftime("%Y年%m月%d日") %></td>
+          <td><%=h employee_clothes.get_type %></td>
+          <td><%=h employee_clothes.get_model %></td>
+          <td><%=h employee_clothes.get_quantity %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <p class="submit">
+    <%= link_to '服装领用', { :controller => 'employee_cloths', :action => 'new', :employee_id => @employee.id } %>
+  </p>
+</div>

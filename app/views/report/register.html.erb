@@ -1,0 +1,77 @@
+<div class="print">
+<H3>上海市浦东新区招聘保安人员报名登记表</H3>
+
+<TABLE>
+<TR>
+  <TH>姓名</TH>
+  <TD><%=h @employee.name%></TD>
+  <TH>性别</TH>
+  <TD><%=h @employee.gender.value%></TD>
+  <TH>身高</TH>
+  <TD><%=h @employee.height%></TD>
+</TR>
+
+<TR>
+  <TH>出生年月</TH>
+  <TD><%=h @employee.birthdate%></TD>
+  <TH>身份证号</TH>
+  <TD colspan="3"><%=h @employee.id_card_number%></TD>
+
+  <TR>
+    <TH>文化程度</TH>
+    <TD><%=h @employee.educational_attainments.value%></TD>
+    <TH>籍贯</TH>
+    <TD><%=h @employee.home_address%></TD>
+    <TH>政治面貌</TH>
+    <TD><%=h @employee.political_status.value%></TD>
+  </TR>
+
+  <TR>
+    <TH>户籍地址</TH>
+    <TD colspan="5"><%=h @employee.home_address%></TD>
+  </TR>
+
+  <TR>
+    <TH>居住地址</TH>
+    <TD colspan="5"><%=h @employee.home_address%></TD>
+  </TR>
+
+  <TR>
+    <TH>邮编</TH>
+    <TD>&nbsp;</TD>
+    <TH>电话</TH>
+    <TD><%=h @employee.phone_number%></TD>
+    <TH>人员类别</TH>
+    <TD><%=h @employee.person_type.value%></TD>
+  </TR>
+
+  <TR>
+    <TH colspan="6">本人简历</TH>
+  </TR>
+
+  <TR>
+    <TH>起始日期</TH>
+    <TH colspan="3">工作或学习单位</TH>
+    <TH colspan="2">工作职位或学习</TH>
+  </TR>
+
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD colspan="3">&nbsp;</TD>
+    <TD colspan="2">&nbsp;</TD>
+  </TR>
+
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD colspan="3">&nbsp;</TD>
+    <TD colspan="2">&nbsp;</TD>
+  </TR>
+
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD colspan="3">&nbsp;</TD>
+    <TD colspan="2">&nbsp;</TD>
+  </TR>
+
+</TABLE>
+</div>

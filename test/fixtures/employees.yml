@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+Alex:
+    name: Alex Tang
+    id_card_number: 360104740718001
+
+AKA:
+    name: AKA
+    id_card_number: 360104197407180010

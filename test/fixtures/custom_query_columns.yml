@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+employee_query_c1:
+    query_id: 1
+    name: id_card_number
+
+employee_query_c2:
+    query_id: 1
+    name: name

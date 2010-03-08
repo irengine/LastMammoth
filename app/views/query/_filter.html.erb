@@ -1,0 +1,21 @@
+<div id="breadcrump">
+  <a href="/query/employees">查询</a> ||
+  <a href="/employees">维护</a>
+</div>
+
+<h2><%= @group.name unless @group.nil? %></h2>
+
+<%= radio_button_tag(
+  'display',
+  'picture',
+  @display == 'picture',
+  :onclick => remote_function(:url => { :action => "list", :id => @id, :display => 'picture'}, :update => "main")
+)
+%>图形
+<%= radio_button_tag(
+  'display',
+  'text',
+  @display == 'text',
+  :onclick => remote_function(:url => { :action => "list", :id => @id, :display => 'text'}, :update => "main")
+)
+%>文本

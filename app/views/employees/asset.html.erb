@@ -1,0 +1,37 @@
+<div class="wrap">
+  <h2><%= I18n.t(page_title) %></h2>
+  <table class="listform">
+    <tbody>
+      <tr class="head">
+        <th></th>
+        <% j = 0; for col in @result.fetch_fields; j = j + 1 %>
+          <th<%= " class=\"none_display\"" if j==1  %>><%=h col.name %></th>
+        <% end %>
+      </tr>
+    </tbody>
+    <tbody>
+      <% i = 0; for row in @result; i = i + 1 %>
+        <tr class="alternate">
+          <td>
+            <%=h i %>
+          </td>
+          <% j = 0; row.each do |v| j = j + 1 %>
+            <td<%= " class=\"none_display\"" if j==1  %>><%=h v %></td>
+          <% end %>
+          <td>
+            <%= link_to I18n.t("button_Cloth"), {:controller => 'employee_cloths', :employee_id => row[0]} %>
+          </td>
+          <td>
+            <%= link_to I18n.t("button_Record"), {:controller => 'employee_records',:employee_id => row[0]} %>
+          </td>
+          <td>
+            <%= link_to I18n.t("button_Fund"), {:controller => 'employee_funds', :employee_id => row[0]} %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to I18n.t("button_Create"), {:controller => 'employees', :action=> 'new'}%>
+  
+</div>

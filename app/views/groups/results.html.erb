@@ -1,0 +1,40 @@
+<div class="wrap">
+  <h2><%= I18n.t(page_title) %></h2>
+  <table class="listform">
+    <tbody>
+      <tr class="head">
+        <th></th>
+        <% j = 0; for col in @result.fetch_fields; j = j + 1 %>
+          <th<%= " class=\"none_display\"" if j==1  %>><%=h col.name %></th>
+        <% end %>
+      </tr>
+    </tbody>
+    <tbody>
+      <% i = 0; for row in @result; i = i + 1 %>
+        <tr class="alternate">
+          <td>
+            <%=h i %>
+          </td>
+          <td class="none_display">
+            <%=h row[0] %>
+          </td>
+          <td>
+            <%=h row[1] %>
+          </td>
+          <td>
+            <%=h I18n.t(row[2]) %>
+          </td>
+          <td>
+            <%= link_to I18n.t("button_Edit"), {:controller => 'groups', :action=> 'edit', :id => row[0]} %>
+          </td>
+          <td>
+            <%= link_to I18n.t("button_Create_Child"), {:controller => 'groups', :action=> 'new', :parent_id => row[0]} unless row[2] == 'UnitTeam' %>
+          </td>
+          <td>
+            <%= link_to I18n.t("button_Delete"), {:controller => 'groups', :action=> 'destroy', :id => row[0]}, :confirm => I18n.t("prompt_delete_group"), :method => :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

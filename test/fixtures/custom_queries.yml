@@ -1,0 +1,6 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+employee_query:
+    id: 1
+    name: employee_query
+    syntax: from employees

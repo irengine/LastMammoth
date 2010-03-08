@@ -1,0 +1,28 @@
+<br/>记录数:<%= @employees.total_entries %><br/>
+<table class="listform">
+  <tbody>
+    <% i = 0; for employee in @employees; i = i + 1 %>
+      <% if i%4 == 1  %>
+        <tr class="alternate">
+        <% end %>
+        <td>
+          <table class="listform">
+            <tbody>
+              <tr><td><%= photo_for(employee)  %></td></tr>
+              <tr><td><%=h employee.name %></td></tr>
+              <tr><td>工号:<%=h employee.employee_number %></td></tr>
+              <tr><td>从业号:<%=h employee.license_number %></td></tr>
+              <tr><td><%= link_to I18n.t("button_Detail"), {:action=> 'info', :id => employee.id}, :popup => true %></td></tr>
+              <td><%= link_to I18n.t("button_Edit"), {:controller=>'employees', :action=> 'edit', :id => employee.id} %></td>
+            </tbody>
+          </table>
+        </td>
+        <% if i%4 == 0  %>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br/>
+<br/>
+<%= will_paginate @employees %>

@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+PageSize:
+  scope: System
+  klass: Integer
+  key: PageSize
+  value: 20
+  mode: active
+  position: 0

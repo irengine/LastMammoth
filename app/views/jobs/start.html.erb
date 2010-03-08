@@ -1,0 +1,59 @@
+<div class="wrap">
+  <h2><%= I18n.t(page_title)%></h2>
+
+  <%= error_messages_for :employee, :job_history %>
+
+  姓名:<%=h @employee.name %><br/>
+  身份证:<%=h @employee.id_card_number %><br/>
+  工号:<%=h @employee.employee_number %>  <br/><br/>
+
+  <h3>岗位信息</h3>
+
+  <div class="narrow">
+
+    <% form_for(@job, :url => { :action => "create_start", :eid => @employee.id }) do |f| %>
+      <table class="editform" width="100%" cellspacing="2" cellpadding="5">
+        <tr>
+          <th scope="row" width="40%"></th>
+          <td width="60%"></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><div id="branch_list"><%= render :partial => 'share/branch_list' %></div></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><div id="group_list"><%= render :partial => 'share/group_list' %></div></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><div id="site_list"><%= render :partial => 'share/site_list' %></div></td>
+        </tr>
+        <tr>
+          <th scope="row">岗位</th>
+          <td><%= f.select "target_job_name", Resource.lookup_ids(:job_name), { :include_blank => true } %></td>
+        </tr>
+        <tr>
+          <th scope="row">职务</th>
+          <td><%= f.select "target_job_title", Resource.lookup_ids(:job_title), { :include_blank => true } %></td>
+        </tr>
+        <tr>
+          <th scope="row">开始日期</th>
+          <td><%= f.date_select :target_begin_date %></td>
+        </tr>
+        <tr>
+          <th scope="row">结束日期</th>
+          <td><%= f.date_select :target_end_date %></td>
+        </tr>
+        <tr>
+          <th scope="row">备注</th>
+          <td><%= f.text_area :target_remark %></td>
+        </tr>
+      </table>
+      <p class="submit">
+        <%= f.submit I18n.t('button_Job_Start') %>
+      </p>
+    <% end %>
+
+  </div>
+</div>

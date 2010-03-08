@@ -1,0 +1,5 @@
+<%= label "group_filter", "site", t('groupfilter_site') %>
+<%= select "group_filter", "site", 
+            @sites ? @sites.collect {|g| [ g.name, g.id ] } : [],
+            { :include_blank => true }
+%>

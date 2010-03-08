@@ -1,0 +1,25 @@
+<div id="list_resource_form" class="wrap">
+  <h2><%= I18n.t(:title_list_resource, :name => I18n.t(@code_scope)) %></h2>
+
+  <table class="listform">
+    <tr class="head">
+      <th></th>
+      <th><%= tl(:key) %></th>
+      <th><%= tl(:value) %></th>
+      <th><%= tl(:mode) %></th>
+    </tr>
+
+    <% i = 0;  for resource in @resources; i = i + 1 %>
+      <tr class="alternate">
+        <td><%=h i %></td>
+        <td><%=h resource.key %></td>
+        <td><%=h resource.value %></td>
+        <td><%=h resource.mode %></td>
+        <td><%= link_to I18n.t("button_Edit"), edit_resource_path(resource) %></td>
+        <td><%= link_to I18n.t("button_Delete"), resource, :confirm => I18n.t("prompt_delete_resource"), :method => :delete %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= link_to I18n.t("button_Create"), new_resource_path %>
+</div>

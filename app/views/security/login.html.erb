@@ -1,0 +1,21 @@
+<div id="loginform">
+  <% form_tag do %>
+    <fieldset>
+      <legend><%= t('loginform_LoginPrompt') %></legend>
+
+      <p>
+        <label for="name"><%= t('loginform_UserName') %></label>
+        <%= text_field_tag :name, params[:name], :cols => 20 %>
+      </p>
+
+      <p>
+        <label for="password"><%= t('loginform_UserPassword') %></label>
+        <%= password_field_tag :password, params[:password], :cols => 20 %>
+      </p>
+
+      <p class="submit">
+        <%= submit_tag t("loginform_LoginButton") %>
+      </p>
+    </fieldset>
+  <% end %>
+</div>

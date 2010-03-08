@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+<% SALT = "aKa" unless defined?(SALT) %>
+
+alex:
+  name: alex
+  full_name: Alex Tang
+  email: alex.tang@taoware.com
+  hashed_password: 8e7ffc7d88c33ec147c27571521ece4e53cea8c8
+  salt: aKa
+
+irene:
+  name: irene
+  full_name: Irene Ma
+  email: irene.ma@taoware.com
+  hashed_password: <%= User.encrypted_password('password', SALT) %>
+  salt: <%= SALT %>

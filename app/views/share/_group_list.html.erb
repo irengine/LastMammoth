@@ -1,0 +1,10 @@
+<%= label "group_filter", "group", t('groupfilter_group') %>
+<%= select "group_filter", "group", 
+            @groups ? @groups.collect {|g| [ g.name, g.id ] } : [],
+            { :include_blank => true },
+            :onchange => remote_function(:update => "site_list",
+                                            :method => "get",
+                                            :with => "'group_id=' + value + '&partial=select'",
+                                            :url => { :controller => :query, :action => :filter_by_group}
+                                          )
+%>

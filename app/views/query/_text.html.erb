@@ -1,0 +1,32 @@
+<br/>记录数:<%= @employees.total_entries %><br/>
+<table class="listform">
+  <tbody>
+    <tr class="head">
+      <th>序号</th>
+      <th>姓名</th>
+      <th>性别</th>
+      <th>工号</th>
+      <th>从业号</th>
+      <th>电话</th>
+      <th>手机</th>
+    </tr>
+  </tbody>
+  <tbody>
+    <% i = 0; for employee in @employees; i = i + 1 %>
+      <tr class="alternate">
+        <td><%=h i %></td>
+        <td><%=h employee.name %></td>
+        <td><%=h employee.gender.value %></td>
+        <td><%=h employee.employee_number %></td>
+        <td><%=h employee.license_number %></td>
+        <td><%=h employee.phone_number %></td>
+        <td><%=h employee.mobile_number %></td>
+        <td><%= link_to I18n.t("button_Detail"), {:action=> 'info', :id => employee.id}, :popup => true %></td>
+        <td><%= link_to I18n.t("button_Edit"), {:controller=>'employees', :action=> 'edit', :id => employee.id} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br/>
+<br/>
+<%= will_paginate @employees %>

@@ -1,0 +1,32 @@
+<div class="wrap">
+  <h2><%= I18n.t("userform") %></h2>
+  <div class="editform">
+    <% form_tag :action => "update_permissions" do %>
+      <table style="background: #ccc;">
+        <tr>
+          <th>&nbsp;</th>
+          <% for user in @users %>
+            <th><%= user.name %></th>
+          <% end %>
+        </tr>
+
+        <% for role in @roles %>
+          <tr style="background: <%= cycle("#ffc","white") %>;">
+          <td align="right"><strong><%= role.name %></strong></td>
+
+          <% for user in @users %>
+            <td align="center">
+              <%= get_permission(user.id, role.id) %>
+            </td>
+          <% end %>
+
+        <% end %>
+        <tr>
+          <td class="submit">
+            <%= submit_tag I18n.t("button_Save") %>
+          </td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</div>

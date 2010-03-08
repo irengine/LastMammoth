@@ -1,0 +1,26 @@
+      <tr>
+        <td colspan="2">
+          <hr/>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+          <table>
+            <tr>
+              <th>起始时间</th>
+              <th>终止时间</th>
+              <th>单位名称</th>
+              <th>职务</th>
+            </tr>
+            <% for i in (0...5) %>
+            <tr>
+              <td><%= date_select "working_experience", "begin_date", :default => {:year => @working_experiences[i].begin_date.year, :month => @working_experiences[i].begin_date.month, :day => 1 }, :discard_day => true, :index => i %></td>
+              <td><%= date_select "working_experience", "end_date", :default => {:year => @working_experiences[i].end_date.year, :month => @working_experiences[i].end_date.month, :day => 1 }, :discard_day => true, :index => i %></td>
+              <td><%= text_field "working_experience", "company_name", :index => i, :value => @working_experiences[i].company_name %></td>
+              <td><%= text_field "working_experience", "job_title", :index => i, :value => @working_experiences[i].job_title %></td>
+            </tr>
+            <% end %>
+          </table>
+        </td>
+      </tr>

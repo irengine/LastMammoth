@@ -1,0 +1,147 @@
+<div class="wrap">
+  <h1>人员详细信息</h1>
+  <TABLE  class="listform">
+    <TR class="head">
+      <TH colspan="7">基本信息</TH>
+    </TR>
+
+    <TR class="alternate">
+      <TH>姓名</TH>
+      <TD><%=h @employee.name%></TD>
+      <TH>性别</TH>
+      <TD><%=h @employee.gender.value%></TD>
+      <TH>身高</TH>
+      <TD><%=h @employee.height%></TD>
+      <TD rowspan="6"><%= photo_for(@employee) %> </TD>
+    </TR>
+
+    <TR class="alternate">
+    <TH>出生年月</TH>
+    <TD><%=h @employee.birthdate%></TD>
+    <TH>身份证号</TH>
+    <TD colspan="3"><%=h @employee.id_card_number%></TD>
+
+    <TR class="alternate">
+      <TH>文化程度</TH>
+      <TD><%=h @employee.educational_attainments.value%></TD>
+      <TH>籍贯</TH>
+      <TD><%=h @employee.home_address%></TD>
+      <TH>政治面貌</TH>
+      <TD><%=h @employee.political_status.value%></TD>
+    </TR>
+
+    <TR class="alternate">
+      <TH>户籍地址</TH>
+      <TD colspan="5"><%=h @employee.home_address%></TD>
+    </TR>
+
+    <TR class="alternate">
+      <TH>居住地址</TH>
+      <TD colspan="5"><%=h @employee.home_address%></TD>
+    </TR>
+
+    <TR class="alternate">
+      <TH>邮编</TH>
+      <TD>&nbsp;</TD>
+      <TH>电话</TH>
+      <TD><%=h @employee.phone_number%></TD>
+      <TH>人员类别</TH>
+      <TD><%=h @employee.person_type.value%></TD>
+    </TR>
+
+    <TR class="thead">
+      <TH colspan="7">本人简历</TH>
+    </TR>
+
+    <TR class="alternate">
+      <TH colspan="3">起始日期/终止日期</TH>
+      <TH colspan="2">工作或学习单位</TH>
+      <TH colspan="2">工作职位或学习</TH>
+    </TR>
+
+    <% for w in @employee.working_experiences %>
+      <tr class="alternate">
+        <td colspan="3"><%=h w.begin_date.strftime("%Y年%m月") %>/<%=h w.end_date.strftime("%Y年%m月") %></td>
+        <td colspan="2"><%=h w.company_name %></td>
+        <td colspan="2"><%=h w.job_title %></td>
+      </tr>
+    <% end %>
+
+    <TR class="thead">
+      <TH colspan="7">异动情况</TH>
+    </TR>
+
+    <TR class="alternate">
+      <TH>异动类型</TH>
+      <TH>起始时间</TH>
+      <TH>结束时间</TH>
+      <TH colspan="2">原单位-部门/中队-驻点</TH>
+      <TH colspan="2">现单位-部门/中队-驻点</TH>
+    </TR>
+
+    <% for h in @employee.job_histories %>
+      <tr class="alternate">
+        <td><%= I18n.t('jobs_' + h.history_type) %></td>
+        <td><%=h h.target_begin_date %></td>
+        <td><%=h h.target_end_date %></td>
+        <td colspan="2"><%=h h.source_branch.name unless h.source_branch.nil? %>-<%=h h.source_group.name unless h.source_group.nil? %>-<%=h h.source_team.name unless h.source_team.nil? %></td>
+        <td colspan="2"><%=h h.target_branch.name unless h.target_branch.nil? %>-<%=h h.target_group.name unless h.target_group.nil? %>-<%=h h.target_team.name unless h.target_team.nil? %></td>
+      </tr>
+    <% end %>
+
+    <TR class="thead">
+      <TH colspan="7">奖罚记录</TH>
+    </TR>
+
+    <TR class="alternate">
+      <TH colspan="2">记录日期</TH>
+      <TH colspan="3">原因</TH>
+      <TH colspan="2">结果</TH>
+    </TR>
+
+    <% for employee_record in @employee.records %>
+      <tr class="alternate">
+        <td colspan="2"><%=h employee_record.record_date.strftime("%Y年%m月%d日") %></td>
+        <td colspan="3"><%=h employee_record.reason %></td>
+        <td colspan="2"><%=h employee_record.result %></td>
+      </tr>
+    <% end %>
+
+    <TR class="thead">
+      <TH colspan="7">缴金记录</TH>
+    </TR>
+
+    <TR class="alternate">
+      <TH colspan="2">缴金记录</TH>
+      <TH colspan="3">类型</TH>
+      <TH colspan="2">街道</TH>
+    </TR>
+
+    <% for employee_fund in @employee.funds %>
+      <tr class="alternate">
+        <td colspan="2"><%=h employee_fund.fund_date.strftime("%Y年%m月%d日") %></td>
+        <td colspan="3"><%=h employee_fund.fund_type.value %></td>
+        <td colspan="2"><%=h employee_fund.fund_address.value %></td>
+      </tr>
+    <% end %>
+
+    <TR class="thead">
+      <TH colspan="7">服装领用记录</TH>
+    </TR>
+
+    <TR class="alternate">
+      <TH colspan="2">领用日期</TH>
+      <TH colspan="3">型号</TH>
+      <TH colspan="2">数量</TH>
+    </TR>
+
+    <% for employee_cloth in @employee.cloths %>
+      <tr class="alternate">
+        <td colspan="2"><%=h employee_cloth.get_date.strftime("%Y年%m月%d日") %></td>
+        <td colspan="3"><%=h employee_cloth.get_type %></td>
+        <td colspan="2"><%=h employee_cloth.get_quantity %></td>
+      </tr>
+    <% end %>
+    
+  </TABLE>
+</div>

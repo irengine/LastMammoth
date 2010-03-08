@@ -1,0 +1,52 @@
+<ul id="navigation">
+  <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)">
+    <a href="#">系统管理</a>
+    <ul>
+      <li><%= link_to "组织管理", :controller => 'groups', :action => 'custom' %></li>
+      <li><%= link_to "用户管理", :controller => 'users' %></li>
+      <li><%= link_to "角色管理", :controller => 'role', :action => 'list_entries' %></li>
+      <li><%= link_to "权限管理", :controller => 'user', :action => 'list_permissions' %></li>
+    </ul>
+  </li>
+  <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)">
+    <a href="#">人员管理</a>
+    <ul>
+      <li><%= link_to "人员信息管理", :controller => 'employees', :action => 'custom'  %></li>
+      <li><%= link_to "人事异动管理", :controller => 'jobs', :action => 'custom' %></li>
+      <li><%= link_to "服装管理", :controller => 'employees', :action => 'asset' %></li>
+      <li><%= link_to "奖惩管理", :controller => 'employees', :action => 'asset' %></li>
+      <li><%= link_to "缴金管理", :controller => 'employees', :action => 'asset' %></li>
+    </ul>
+  </li>
+  <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)">
+    <a href="#">合同管理</a>
+    <ul>
+      <li><%= link_to "驻点合同管理", :controller => 'site_contracts' %></li>
+    </ul>
+  </li>
+  <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)">
+    <a href="#">报表管理</a>
+    <ul>
+      <li><%= link_to "组织机构一览", :controller => 'groups' %></li>
+    </ul>
+  </li>
+  <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)">
+    <a href="#">代码管理</a>
+    <ul>
+      <li><%= link_to "政治面貌", :controller => 'resources', :code_scope => 'political_status' %></li>
+      <li><%= link_to "文化程度", :controller => 'resources', :code_scope => 'educational_attainments' %></li>
+      <li><%= link_to "人员性质", :controller => 'resources', :code_scope => 'person_type' %></li>
+      <li><%= link_to "用工性质", :controller => 'resources', :code_scope => 'employee_type' %></li>
+      <li><%= link_to "缴金类型", :controller => 'resources', :code_scope => 'fund_type' %></li>
+      <li><%= link_to "缴金街道", :controller => 'resources', :code_scope => 'fund_address' %></li>
+      <li><%= link_to "培训情况", :controller => 'resources', :code_scope => 'training_status' %></li>
+      <li><%= link_to "岗位", :controller => 'resources', :code_scope => 'job_name' %></li>
+      <li><%= link_to "职务", :controller => 'resources', :code_scope => 'job_title' %></li>
+      <li><%= link_to "服装类别", :controller => 'resources', :code_scope => 'clothes_type' %></li>
+      <li><%= link_to "服装型号", :controller => 'resources', :code_scope => 'clothes_model' %></li>
+    </ul>
+  </li>
+  <li>
+    <%= link_to "人员查询", :controller => 'query' %>
+  </li>
+</ul>

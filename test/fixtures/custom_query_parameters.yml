@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+employee_query_p1:
+    query_id: 1
+    name: employee.name
+    flag: string
+    syntax: employees.name = '%s'
+
+employee_query_p2:
+    query_id: 1
+    name: employee.age
+    flag: integer
+    syntax: (year(now()) - year(employees.birthdate)) >= %d

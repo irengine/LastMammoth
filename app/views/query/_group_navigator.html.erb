@@ -1,0 +1,65 @@
+<div id="navigator"></div>
+
+<script type="text/javascript">
+
+    //global variable to allow console inspection of tree:
+    var tree;
+    
+    <% cache(:controller =>  'query') do %>
+    var treedata = [
+        <%= build_tree_data() %>
+    ];
+    <% end %>
+    
+    var topLevel = 0;
+
+    //anonymous function wraps the remainder of the logic:
+    (function() {
+
+        //function to initialize the tree:
+        function treeInit() {
+            buildTree();
+        }
+        
+        function buildTree() {
+            tree = new YAHOO.widget.TreeView("navigator");
+            topLevel = treedata[0];
+            
+            addChildrenNodes(topLevel, 0, tree.getRoot());
+            
+            tree.draw();
+            
+        }
+    
+        function addChildrenNodes(currLevel, nodeIndex, parent) {
+            var lastNode;
+            var level = currLevel;
+            var expanded = false;
+
+            while (nodeIndex < treedata.length) {
+                level = treedata[nodeIndex];
+                if (level == currLevel) {
+                    nodeIndex++;
+                    expanded = level == topLevel ? true : false
+                    lastNode = new YAHOO.widget.HTMLNode(treedata[nodeIndex++], parent, expanded, true);
+                } else if (level < currLevel) {
+                    return nodeIndex;
+                } else {
+                    nodeIndex = addChildrenNodes(level, nodeIndex, lastNode);
+                }
+            }
+            return nodeIndex;
+        }
+
+        //Add an onDOMReady handler to build the tree when the document is ready
+        YAHOO.util.Event.onDOMReady(treeInit);
+
+    })();
+    
+    function listGroup(id)
+    {
+        <%= remote_url_for_group() %>;
+        //return false;
+    }
+
+</script>

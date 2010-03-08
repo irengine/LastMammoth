@@ -1,0 +1,12 @@
+<div>
+  <h2><%= I18n.t("side_Title") %></h2>
+  <p>
+    <%= I18n.t("side_User") %><%=h @current_user.name %>
+  </p>
+  <p>
+    <%= I18n.t("side_Group") %><%=h @current_group.name %>
+  </p>
+  <p>
+    <%= link_to I18n.t("prompt_Logout"), :controller => 'security', :action => 'logout' %>
+  </p>
+</div>

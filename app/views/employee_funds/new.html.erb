@@ -1,0 +1,40 @@
+<div class="wrap">
+  <h2>缴金记录</h2>
+  
+  <%= error_messages_for :employee_records %>
+
+  姓名:<%=h @employee.name %>
+  身份证:<%=h @employee.id_card_number %>
+  工号:<%=h @employee.employee_number %>
+  <br/><br/>
+    
+  <h3>缴金记录信息</h3>
+  
+  <div class="editform">
+    
+    <% form_for(@employee_fund) do |f| %>
+      <table class="editform" width="100%" cellspacing="2" cellpadding="5">
+        <tr>
+          <th scope="row" width="40%"></th>
+          <td width="60%"></td>
+        </tr>
+        <tr>
+          <th scope="row">缴金日期</th>
+          <td><%= f.date_select :fund_date %></td>
+        </tr>
+        <tr>
+          <th scope="row">缴金类型</th>
+          <td><%= f.select :fund_type_id, Resource.lookup_ids(:fund_type) %></td>
+        </tr>
+        <tr>
+          <th scope="row">缴金街道</th>
+          <td><%= f.select :fund_address_id, Resource.lookup_ids(:fund_address) %></td>
+        </tr>
+      </table>
+      <p class="submit">
+        <%= f.submit "Create" %>
+      </p>
+    <% end %>
+        
+  </div>
+</div>

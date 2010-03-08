@@ -1,0 +1,10 @@
+<%= label "group_filter", "branch", t('groupfilter_branch') %>
+<%= select "group_filter", "branch", 
+            @branches ? @branches.collect {|g| [ g.name, g.id ] } : [],
+            { :include_blank => true },
+            :onchange => remote_function(:update => "group_list",
+                                            :method => "get",
+                                            :with => "'branch_id=' + value + '&partial=select'",
+                                            :url => { :controller => :query, :action => :filter_by_branch}
+                                          )
+%>

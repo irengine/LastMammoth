@@ -1,0 +1,35 @@
+<div class="wrap">
+  <h2><%= I18n.t(page_title) %></h2>
+  <%= error_messages_for :employee, :photo %>
+  <div class="editform">
+    <p>
+      <%= photo_for(@employee) %>
+    </p>
+    <% tabular_form_for(@employee, :html => { :multipart => true }) do |f| %>
+      <%= f.text_field :license_number %>
+      <%= f.text_field :employee_number %>
+      <%= f.text_field :name %>
+      <%= f.text_field :id_card_number %>
+      <%= f.text_field :height %>
+      <%= f.text_field :phone_number %>
+      <%= f.text_field :mobile_number %>
+      <%= f.select :gender_id, Resource.lookup_ids(:gender) %>
+      <%= f.select :political_status_id, Resource.lookup_ids(:political_status) %>
+      <%= f.select :educational_attainments_id, Resource.lookup_ids(:educational_attainments) %>
+      <%= f.select :person_type_id, Resource.lookup_ids(:person_type) %>
+      <%= f.check_box :is_demobilized %>
+      <%= f.text_field :permanent_residence %>
+      <%= f.select :employee_type_id, Resource.lookup_ids(:employee_type) %>
+      <%= f.text_field :home_address %>
+      <%= f.select :fund_type_id, Resource.lookup_ids(:fund_type) %>
+      <%= f.date_select :fund_date %>
+      <%= f.select :fund_address_id, Resource.lookup_ids(:fund_address) %>
+      <%= f.select :training_status_id, Resource.lookup_ids(:training_status) %>
+      <%= f.text_area :remarks, :rows => 5 %>
+
+      <%= render :partial => "experiences" %>
+
+      <%= f.submit I18n.t("button_Save") if @is_editable%>
+    <% end %>
+  </div>
+</div>

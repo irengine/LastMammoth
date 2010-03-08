@@ -1,0 +1,16 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Mermaid HR System</title>
+    <%= stylesheet_link_tag "mammoth", :media => "all" %>
+    <%= stylesheet_link_tag 'yui/treeview' %>
+    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag 'yui/yahoo-dom-event' %>
+    <%= javascript_include_tag 'yui/treeview-min' %>
+  </head>
+  <body>
+    <div id="query" class="wrap">
+      <%= yield :layout %>
+    </div>
+  </body>
+</html>

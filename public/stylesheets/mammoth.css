@@ -1,0 +1,306 @@
+/* 
+Document   : Mammoth
+Created on : 2009-3-14, 22:39:22
+Author     : Alex Tang
+Description:
+Purpose of the stylesheet follows.
+*/
+#menu {
+    padding:0;
+    margin:0;
+}
+
+body{
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size:   12px;
+    line-height: 18px;
+}
+
+/* Styles for main page */
+
+#banner {
+    background: #9c9;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid;
+    font: small-caps 40px/60px verdana;
+    color: #282;
+    text-align: center;
+}
+
+#banner img {
+    float: left;
+}
+
+#columns {
+    background: #141;
+    clear: both;
+}
+
+#main {
+    margin-left: 16em;
+    padding-top: 1em;
+    padding-left: 2em;
+    background: white;
+}
+
+#breadcrump {
+    margin: 1em 0;
+}
+
+#side {
+    clear: left;
+    float: left;
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    width: 15em;
+    background: #141;
+}
+
+#side a, #side p {
+    color: #bfb;
+}
+
+h1 {
+    font-size: 150%;
+    color: #226;
+    border-bottom: 3px dotted #77d;
+}
+
+/* The error box from scaffold */
+
+#notice {
+    border: 2px solid red;
+    padding: 1em;
+    margin-bottom: 2em;
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.fieldWithErrors {
+    padding: 2px;
+    background-color: red;
+    /*display: table;*/
+}
+
+#errorExplanation {
+    width: 400px;
+    border: 2px solid red;
+    padding: 7px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    margin: -7px;
+    background-color: #c00;
+    color: #fff;
+}
+
+#errorExplanation p {
+    color: #333;
+    margin-bottom: 0;
+    padding: 5px;
+}
+
+#errorExplanation ul li {
+    list-style: square;
+}
+
+/* The edit form */
+
+.editform {
+    /*position: relative;*/
+    margin: 1em;
+    padding: 0.5em 0 0;
+}
+
+.editform fieldset {
+    background: #efe;
+}
+
+.editform legend {
+    color: #dfd;
+    background: #141;
+    padding: 0.2em 1em;
+}
+
+.editform label {
+    width: 10em;
+    float: left;
+    text-align: right;
+    margin-right: 0.5em;
+    display: block;
+}
+
+.editform textarea, .editform input, .editform select {
+    background:#F4F4F4;
+    border:1px solid #B2B2B2;
+    color:#000000;
+    line-height:normal;
+    margin:1px;
+    padding:3px;
+}
+
+.editform input:focus, .editform textarea:focus, .editform label:focus {
+    background: #fff;
+    border: 1px solid #686868;
+}
+
+.editform th {
+    width: 120px;
+}
+
+/* The login form */
+
+#loginform {
+    /*position: relative;*/
+    margin: 5em auto 1em;
+    padding: 20px 0 0;
+    width: 425px;
+}
+
+#loginform fieldset {
+    background: #efe;
+}
+
+#loginform legend {
+    color: #dfd;
+    background: #141;
+    padding: 0.2em 1em;
+}
+
+#loginform label {
+    width: 5em;
+    float: left;
+    text-align: right;
+    margin-right: 0.5em;
+    display: block;
+}
+
+#loginform textarea, #loginform input, #loginform select {
+    background:#F4F4F4;
+    border:1px solid #B2B2B2;
+    color:#000000;
+    line-height:normal;
+    margin:1px;
+    padding:3px;
+}
+
+#loginform input:focus, #loginform textarea:focus, #loginform label:focus {
+    background: #fff;
+    border: 1px solid #686868;
+}
+
+/* The submit area */
+.submit {
+    text-align:right;
+}
+
+.submit input {
+    background:transparent url(/images/button.png);
+    border-color:#CCCCCC #999999 #999999 #CCCCCC;
+    border-style:double;
+    border-width:3px;
+    color:#333333;
+    padding:0.25em;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.wrap {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 1em;
+}
+
+.wrap h2 {
+    margin: 2em .5em;
+    background: url( /images/heading-bg.gif ) repeat-x bottom;
+}
+
+#navigation, #navigation li ul {
+    list-style-type:none;
+}
+
+#navigation {
+    margin: 0 0 0 15em;
+}
+
+#navigation li {
+    float:left;
+    text-align:center;
+    position:relative;
+}
+
+#navigation li a:link, #navigation li a:visited {
+    display:block;
+    text-decoration:none;
+    color:#000;
+    width:100px;
+    height:30px;
+    line-height:30px;
+    border:1px solid #fff;
+    border-width:1px 1px 0 0;
+    background:#c5dbf2;
+    padding-left:10px;
+}
+
+#navigation li a:hover {
+    color:#fff;
+    background:#2687eb;
+}
+
+#navigation li ul li a:hover {
+    color:#fff;
+    background:#6b839c;
+}
+
+#navigation li ul {
+    display:none;
+    position:absolute;
+    top:30px;
+    left:0px;
+    margin-top:1px;
+    width:120px;
+}
+
+#navigation li ul li ul {
+    display:none;
+    position:absolute;
+    top:0px;
+    left:130px;
+    margin-top:0;
+    margin-left:1px;
+    width:120px;
+}
+
+.listform {
+	width: 100%;
+}
+
+.listform td, .listform th {
+	padding: 5px 6px;
+}
+
+.listform th {
+	text-align: left;
+}
+
+.listform .head {
+	background: #dfdfdf;
+}
+
+.listform .alternate {
+	background: #f1f1f1;
+}
+
+.none_display
+{
+    display: none;
+}

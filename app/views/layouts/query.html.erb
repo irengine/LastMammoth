@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Mermaid HR System</title>
+    <%= stylesheet_link_tag "mammoth", :media => "all" %>
+    <%= stylesheet_link_tag 'yui/treeview' %>
+    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag 'yui/yahoo-dom-event' %>
+    <%= javascript_include_tag 'yui/treeview-min' %>
+  </head>
+  <body>
+    <div id="banner">
+      <%= image_tag("rails.png") %>
+      <%= @page_title || "浦东保安总公司人事信息系统" %>
+    </div>
+    <div id="columns">
+      <div id="side">
+        <%= render :partial => "group_navigator" %>
+      </div>
+      <div id="main">
+        <div id="breadcrump">
+          <a href="/query/employees">查询</a> ||
+          <a href="/employees">维护</a>
+        </div>
+        <% if flash[:notice] -%>
+          <div id="notice"><%= flash[:notice] %></div>
+        <% end -%>
+        <div id="query" class="wrap">
+          <%= yield :layout %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

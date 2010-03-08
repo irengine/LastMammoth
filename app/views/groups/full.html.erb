@@ -1,0 +1,38 @@
+<div class="wrap">
+  <h2><%= I18n.t(page_title) %></h2>
+  <table class="listform">
+    <tbody>
+      <tr class="head">
+        <th></th>
+        <th><%= tl(:name) %></th>
+        <th><%= tl(:lv) %></th>
+      </tr>
+    </tbody>
+    <tbody>
+      <% i = 0; for group in @groups; i = i + 1 %>
+        <% next if group.lv.nil? %>
+        <tr class="alternate">
+          <td>
+            <%=h i %>
+          </td>
+          <td>
+            <% (group.lv/2).times{ %>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp<% } %>
+            <%=h group.name %>
+          </td>
+          <td>
+            <%=h Group.get_type(group.lv/2) %>
+          </td>
+          <td>
+            <%= link_to I18n.t("button_Edit"), {:controller => 'groups', :action=> 'edit', :id => group.id} %>
+          </td>
+          <td>
+            <%= link_to I18n.t("button_Create_Child"), {:controller => 'groups', :action=> 'new', :parent_id => group.id} unless group.type == 'UnitTeam' %>
+          </td>
+          <td>
+            <%= link_to I18n.t("button_Delete"), {:controller => 'groups', :action=> 'destroy', :id => group.id}, :confirm => I18n.t("prompt_delete_group"), :method => :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

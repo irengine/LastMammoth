@@ -1,0 +1,16 @@
+<div class="wrap">
+  <h2><%= I18n.t(:active_users_form) %></h2>
+  <table style="background: #ccc;">
+    <tr>
+      <th><%= I18n.t(:active_users_form_user_id) %></th>
+      <th><%= I18n.t(:active_users_form_user_name) %></th>
+    </tr>
+
+    <% for user in @active_users %>
+      <tr style="background: <%= cycle("#ffc","white") %>;">
+        <td><%=h user.id %></td>
+        <td><%=h user.name %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

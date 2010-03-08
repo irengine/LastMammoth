@@ -1,0 +1,24 @@
+<h2></h2>
+<%= radio_button_tag(
+  'display',
+  'picture',
+  @display == 'picture',
+  :onclick => remote_function(:url => { :action => "display", :display => 'picture'})
+)
+%>图形
+<%= radio_button_tag(
+  'display',
+  'text',
+  @display == 'text',
+  :onclick => remote_function(:url => { :action => "display", :display => 'text'})
+)
+%>文本
+<div id="filterbar">
+  <%= render :inline => @view %>
+</div>
+<div id="result" class="listform">
+  <% if @employees.nil? %>
+  <% else %>
+    <%= render :partial => @display %>
+  <%  end %>
+</div>
