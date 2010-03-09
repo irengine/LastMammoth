@@ -23,10 +23,10 @@ Ext.onReady(function() {
             }
         }
     });
-
-    var handleAction = function(action) {
-        Ext.Msg.alert('You clicked "' + action + '"');
-    };
+//
+//    var handleAction = function(action) {
+//        Ext.Msg.alert('You clicked "' + action + '"');
+//    };
 
     var contentPanel = {
         region: 'center',
