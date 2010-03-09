@@ -24,9 +24,6 @@ class Yat::SecurityController < ApplicationController
     redirect_to(:action => "login")
   end
 
-  def test
-  end
-
   protected
 
   def authorize
