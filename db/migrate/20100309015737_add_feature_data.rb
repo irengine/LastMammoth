@@ -34,6 +34,11 @@ class AddFeatureData < ActiveRecord::Migration
 
         Feature.create :name => "查询", :level => 600
         Feature.create :name => "人员查询", :controller_name => 'query', :level => 610
+
+        r = Role.find(1)
+        r.features.delete_all
+        r.features << Feature.find(:all)
+        r.save
   end
 
   def self.down
