@@ -220,6 +220,8 @@ h1 {
 }
 
 .wrap h2 {
+    font-size:   18px;
+    line-height: 24px;
     margin: 2em .5em;
     background: url( /images/heading-bg.gif ) repeat-x bottom;
 }
@@ -281,6 +283,9 @@ h1 {
 }
 
 .listform {
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size:   12px;
+    line-height: 18px;
 	width: 100%;
 }
 

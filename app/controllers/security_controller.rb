@@ -1,6 +1,8 @@
 class SecurityController < ApplicationController
   before_filter :authorize, :except => [:login, :logout]
 
+#  layout 'yat', :only => ['custom', 'results']
+
   def index
   end
 
@@ -12,6 +14,7 @@ class SecurityController < ApplicationController
     end
     view = CustomQueryGenerator.generate_view(name)
     render :inline => view, :layout => "application"
+#    render :inline => view, :layout => "yat"
   end
 
   def results
