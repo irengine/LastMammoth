@@ -11,4 +11,7 @@ class Yat::QueryController < Yat::SecurityController
     end
   end
 
+  def dummy
+
+  end
 end

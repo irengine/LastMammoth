@@ -50,13 +50,12 @@ Ext.onReady(function() {
                         // you define as redirect.
 
                         success:function(form, action) {
-                            Ext.Msg.alert('Status', '登录成功!', function(btn, text) {
-                                if (btn == 'ok') {
+//                            Ext.Msg.alert('Status', '登录成功!', function(btn, text) {
+//                                if (btn == 'ok') {
                                     obj = Ext.util.JSON.decode(action.response.responseText);
-                                    var redirect = obj.uri;
-                                    window.location = redirect;
-                                }
-                            });
+                                    window.location = obj.uri;
+//                                }
+//                            });
                         },
 
                         // Failure function, see comment above re: success and failure.

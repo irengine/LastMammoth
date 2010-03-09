@@ -9,7 +9,8 @@ class Yat::SecurityController < ApplicationController
         session[:user_id] = user.id
         uri = session[:original_uri]
         session[:original_uri] = nil
-        session[:menu_data] = get_menu
+        uri = '/yat/query/dummy' if uri.nil?
+        session[:menu_data] = get_menu(user)
         render :json => { :success => true, :uri => uri }
       else
         render :json => { :success => false, :errors => { :reason => I18n.t("loginform_InvalidPassword") } }
@@ -48,8 +49,8 @@ class Yat::SecurityController < ApplicationController
   end
 
 
-  def get_menu
-    r = Role.find_by_id(1)
+  def get_menu(user)
+    r = user.roles[0]
     fs = r.features
 
     m = []
