@@ -75,6 +75,7 @@ class Yat::SecurityController < ApplicationController
     uri_options[:controller] = '/' + f.controller_name unless f.controller_name.nil?
     uri_options[:action] = f.action_name unless f.action_name.nil?
     uri_options[:code_scope] = f.code_scope unless f.code_scope.nil?
+    uri_options[:only_path] = true
     url_for(uri_options)
   end
 end

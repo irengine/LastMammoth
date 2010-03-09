@@ -50,7 +50,10 @@ Ext.onReady(function() {
     });
 
     var handleAction = function(action) {
-        Ext.getCmp('worksheet').load({url: action});
+        if(action == '/query/employees')
+            window.location = action;
+        else
+            Ext.getCmp('worksheet').load({url: action});
     };
 
     var menuBar = new Ext.Toolbar({
