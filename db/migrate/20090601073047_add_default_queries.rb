@@ -4,6 +4,8 @@ class AddDefaultQueries < ActiveRecord::Migration
 
     CustomQueryParameter.create(:query => q1, :name => 'group.type', :flag => 'list', :syntax => 'groups.type = \'%s\'', :code => 'Group.types')
     CustomQueryParameter.create(:query => q1, :name => 'group.name', :flag => 'string', :syntax => 'groups.name like \'%%%s%%\'')
+    CustomQueryParameter.create(:query => q1, :name => 'group.lft', :flag => 'hidden', :syntax => 'groups.lft >= %d')
+    CustomQueryParameter.create(:query => q1, :name => 'group.rgt', :flag => 'hidden', :syntax => 'groups.lft <= %d')
 
     q2 = CustomQuery.create(:name => 'employee_query', :syntax => 'select id, name as \'姓名\', id_card_number as \'身份证\', license_number as \'从业号\', employee_number as \'工号\', phone_number as \'电话\', mobile_number as \'手机\' from employees where 1=1', :action => '/employees/results')
 

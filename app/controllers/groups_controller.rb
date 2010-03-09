@@ -66,6 +66,8 @@ class GroupsController < SecurityController
     if is_empty(params[:search])
       redirect_to :action => "full"
     else
+      params[:search]['Group__lft'] = @current_group.lft
+      params[:search]['Group__rgt'] = @current_group.rgt
       super
     end
   end
