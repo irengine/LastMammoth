@@ -24,9 +24,6 @@
       <%= f.text_field :residence_address %>
       <%= f.text_field :current_working_years %>
       <%= f.text_field :total_working_years %>
-      <%= f.select :fund_type_id, Resource.lookup_ids(:fund_type) %>
-      <%= f.date_select :fund_date %>
-      <%= f.select :fund_address_id, Resource.lookup_ids(:fund_address) %>
       <%= f.select :training_status_id, Resource.lookup_ids(:training_status) %>
       <%= f.text_area :remarks, :rows => 5 %>
 
