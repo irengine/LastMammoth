@@ -1,7 +1,7 @@
 class RoleController < SecurityController
   def list_entries
     @roles = Role.find(:all, :order => "name")
-    @features = Feature.find(:all, :order => "name")
+    @features = Feature.find(:all, :order => "level")
   end
 
   def update_entries
