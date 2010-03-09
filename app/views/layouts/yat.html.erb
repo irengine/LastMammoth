@@ -19,7 +19,61 @@
   <!-- overrides to library -->
   <!-- extensions -->
   <!-- page specific -->
-  <%= javascript_include_tag "page/yat.js" %>
+
+<% javascript_tag do %>
+Ext.onReady(function() {
+    Ext.QuickTips.init();
+
+    var navigatorPanel = new Ext.tree.TreePanel({
+        region: 'west',
+        collapsible: true,
+        title: '组织结构',
+        xtype: 'treepanel',
+        width: 200,
+        autoScroll: true,
+        split: true,
+        loader: new Ext.tree.TreeLoader({
+            url:'/yat/query/group',
+            requestMethod:'GET',
+            baseParams:{format:'json'}
+        }),
+        root: new Ext.tree.AsyncTreeNode(),
+        rootVisible: false,
+        listeners: {
+            click: function(n) {
+                //			Ext.getCmp('my-grid').store.load({params: {id: n.attributes.id}});
+                Ext.Msg.alert('Navigation Tree Click', 'You clicked: "' + n.attributes.id + '"');
+            }
+        }
+    });
+
+    var handleAction = function(action) {
+        Ext.Msg.alert('You clicked "' + action + '"');
+        //window.location = action;
+        Ext.getCmp('worksheet').load({url: action});
+    };
+
+    var contentPanel = {
+        id: 'worksheet',
+        contentEl: 'workspace',
+        region: 'center',
+        autoScroll: true,
+        tbar: new Ext.Toolbar({
+            enableOverflow: true,
+            items: <%= session[:menu_data] %>
+        })
+
+    };
+
+    var vp = new Ext.Viewport({
+        layout: 'border',
+        items: [
+            navigatorPanel,
+            contentPanel
+        ]
+    });
+});
+<% end %>
 
   <script type="text/javascript">
       // Path to the blank image should point to a valid location on your server
