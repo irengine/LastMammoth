@@ -55,12 +55,20 @@ class AddDefaultQueries < ActiveRecord::Migration
 #    CustomQueryParameter.create(:query => q4, :name => 'employee.name', :flag => 'string', :syntax => 'employees.name = \'%s\'')
 #    CustomQueryParameter.create(:query => q4, :name => 'employee.id_card_number', :flag => 'string', :syntax => 'employees.id_card_number = \'%s\'')
 
-    q5 = CustomQuery.create(:name => 'employees_query', :syntax => 'select employees.* from employees where 1=1', :action => '/query/employees')
+    q5 = CustomQuery.create(:name => 'employees_query', :syntax => 'select employees.* from employees inner join employee_statuses on employees.id = employee_statuses.employee_id left outer join groups as g on employee_statuses.group_id = g.id left outer join groups as t on employee_statuses.group_id = t.id where 1=1', :action => '/query/employees')
 
+    CustomQueryParameter.create(:query => q5, :name => 'employee.group_id', :flag => 'string', :syntax => '(case %d when employee_statuses.branch_id then true when employee_statuses.group_id then true when employee_statuses.team_id then true else false end)')
+    CustomQueryParameter.create(:query => q5, :name => 'employee.group_name', :flag => 'string', :syntax => '\'%s\'<>\'\'')
+    CustomQueryParameter.create(:query => q5, :name => 'employee.status', :flag => 'list', :syntax => 'employee_statuses.flag = %d', :code => 'EmployeeStatus.flags')
     CustomQueryParameter.create(:query => q5, :name => 'employee.name', :flag => 'string', :syntax => 'employees.name = \'%s\'')
+    CustomQueryParameter.create(:query => q5, :name => 'employee.employee_number', :flag => 'string', :syntax => 'employees.employee_number = \'%s\'')
+    CustomQueryParameter.create(:query => q5, :name => 'employee.license_number', :flag => 'string', :syntax => 'employees.license_number = \'%s\'')
     CustomQueryParameter.create(:query => q5, :name => 'employee.id_card_number', :flag => 'string', :syntax => 'employees.id_card_number = \'%s\'')
-    CustomQueryParameter.create(:query => q5, :name => 'employee.min_age', :flag => 'integer', :syntax => '(year(now()) - year(employees.birthdate)) >= %d')
-    CustomQueryParameter.create(:query => q5, :name => 'employee.max_age', :flag => 'integer', :syntax => '(year(now()) - year(employees.birthdate)) < %d')
+    CustomQueryParameter.create(:query => q5, :name => 'employee.person_type_id', :flag => 'list', :syntax => 'employees.person_type_id = %d', :code => 'Resource.lookup_ids(:person_type)')
+    CustomQueryParameter.create(:query => q5, :name => 'employee.fund_type_id', :flag => 'list', :syntax => 'employees.fund_type_id = %d', :code => 'Resource.lookup_ids(:fund_type)')
+    CustomQueryParameter.create(:query => q5, :name => 'employee.fund_address_id', :flag => 'list', :syntax => 'employees.fund_address_id = %d', :code => 'Resource.lookup_ids(:fund_address)')
+    CustomQueryParameter.create(:query => q5, :name => 'employee.training_status_id', :flag => 'list', :syntax => 'employees.training_status_id = %d', :code => 'Resource.lookup_ids(:training_status)')
+
   end
 
   def self.down
