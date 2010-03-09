@@ -31,6 +31,7 @@ class JobsController < SecurityController
     @employee.status.branch = branch
     @employee.status.group = group
     @employee.status.team = team
+    @employee.status.flag = 1
 
     @employee.default_group = branch
 
@@ -74,6 +75,7 @@ class JobsController < SecurityController
     @employee.status.branch = branch
     @employee.status.group = group
     @employee.status.team = team
+    @employee.status.flag = 0
 
     @employee.default_group = branch
 
@@ -116,6 +118,7 @@ class JobsController < SecurityController
     @employee.status.branch = branch
     @employee.status.group = group
     @employee.status.team = team
+    @employee.status.flag = 2
 
     @employee.default_group = branch
 

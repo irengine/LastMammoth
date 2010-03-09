@@ -41,8 +41,6 @@ class Yat::SecurityController < ApplicationController
     else
       @current_group =@current_user.default_group
     end
-    
-#    get_menu
   end
 
 

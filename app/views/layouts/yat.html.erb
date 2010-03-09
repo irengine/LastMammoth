@@ -33,7 +33,7 @@ Ext.onReady(function() {
         autoScroll: true,
         split: true,
         loader: new Ext.tree.TreeLoader({
-            url:'/yat/query/group',
+            url:'/yat/query/limit_group',
             requestMethod:'GET',
             baseParams:{format:'json'}
         }),
@@ -41,8 +41,10 @@ Ext.onReady(function() {
         rootVisible: false,
         listeners: {
             click: function(n) {
-                //			Ext.getCmp('my-grid').store.load({params: {id: n.attributes.id}});
-                Ext.Msg.alert('Navigation Tree Click', 'You clicked: "' + n.attributes.id + '"');
+                //Ext.getCmp('my-grid').store.load({params: {id: n.attributes.id}});
+                //Ext.Msg.alert('Navigation Tree Click', 'You clicked: "' + n.attributes.id + '"');
+                Ext.getDom('search_Employee__group_id').value = n.attributes.id;
+                Ext.getDom('search_Employee__group_name').value = n.attributes.text;
             }
         }
     });

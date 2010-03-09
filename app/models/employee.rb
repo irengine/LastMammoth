@@ -63,6 +63,7 @@ class Employee < ActiveRecord::Base
     status.branch = employee.default_group
     status.group = employee.default_group.external
     status.employee = employee
+    status.flag = 0
     
     begin
       Employee.transaction do

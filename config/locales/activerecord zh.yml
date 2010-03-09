@@ -41,6 +41,9 @@ zh:
         age: "年龄"
         min_age: "年龄 (>=)"
         max_age: "年龄 (<)"
+        status: "状态"
+        group_id: "代号"
+        group_name: "组织"
       resource:
         scope: "范围"
         key: "键"
