@@ -21,6 +21,9 @@
       <%= f.text_field :permanent_residence %>
       <%= f.select :employee_type_id, Resource.lookup_ids(:employee_type) %>
       <%= f.text_field :home_address %>
+      <%= f.text_field :residence_address %>
+      <%= f.text_field :current_working_years %>
+      <%= f.text_field :total_working_years %>
       <%= f.select :fund_type_id, Resource.lookup_ids(:fund_type) %>
       <%= f.date_select :fund_date %>
       <%= f.select :fund_address_id, Resource.lookup_ids(:fund_address) %>

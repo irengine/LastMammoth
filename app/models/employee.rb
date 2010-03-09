@@ -44,13 +44,14 @@ class Employee < ActiveRecord::Base
   :person_type,                         #人员性质 PersonTypes
   :permanent_residence,                 #户口所属区
   :employee_type,                       #用工性质 EmployeeTypes
-  :home_address                         #家庭住址
+  :home_address ,                       #家庭住址
+  :residence_address                    #户口地址
 
   validates_uniqueness_of :license_number, :employee_number, :id_card_number
 
   validates_format_of :id_card_number, :with => /\A([1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3})|([1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[A-Z]))\Z/
 
-  validates_numericality_of :license_number, :employee_number, :height
+  validates_numericality_of :license_number, :employee_number, :height, :current_working_years, :total_working_years
 
   def before_save
     self.birthdate = get_birthdate_from_id_card_number
