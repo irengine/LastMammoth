@@ -25,7 +25,9 @@
           <td><%=h employee_clothes.get_type %></td>
           <td><%=h employee_clothes.get_model %></td>
           <td><%=h employee_clothes.get_quantity %></td>
-          <td></td>
+          <td>
+            <%= link_to I18n.t("button_Edit"), edit_employee_cloth_path(employee_clothes) %>
+          </td>
           <td></td>
           <td></td>
         </tr>

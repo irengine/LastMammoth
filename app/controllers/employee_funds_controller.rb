@@ -37,4 +37,21 @@ class EmployeeFundsController < SecurityController
       render :action => 'new'
     end
   end
+
+  def edit
+    @employee_fund =EmployeeFund.find_by_id(params[:id])
+    @employee = @employee_fund.employee
+  end
+
+  def update
+    @employee_fund =EmployeeFund.find_by_id(params[:id])
+    @employee_fund.update_attributes(params[:employee_fund])
+    if @employee_fund.save
+      flash[:notice] = I18n.t("action_Save_Success")
+      redirect_to :action => "index"
+    else
+      @employee = @employee_fund.employee
+      render :action => 'edit'
+    end
+  end
 end

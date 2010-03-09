@@ -37,4 +37,21 @@ class EmployeeRecordsController < SecurityController
       render :action => 'new'
     end
   end
+
+  def edit
+    @employee_record =EmployeeRecord.find_by_id(params[:id])
+    @employee = @employee_record.employee
+  end
+
+  def update
+    @employee_record =EmployeeRecord.find_by_id(params[:id])
+    @employee_record.update_attributes(params[:employee_record])
+    if @employee_record.save
+      flash[:notice] = I18n.t("action_Save_Success")
+      redirect_to :action => "index"
+    else
+      @employee = @employee_record.employee
+      render :action => 'edit'
+    end
+  end
 end

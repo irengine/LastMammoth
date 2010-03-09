@@ -23,7 +23,9 @@
           <td><%=h employee_fund.fund_date.strftime("%Y年%m月%d日") %></td>
           <td><%=h employee_fund.fund_type.value %></td>
           <td><%=h employee_fund.fund_address.value %></td>
-          <td></td>
+          <td>
+            <%= link_to I18n.t("button_Edit"), edit_employee_fund_path(employee_fund) %>
+          </td>
           <td></td>
           <td></td>
         </tr>

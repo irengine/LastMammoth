@@ -1,0 +1,40 @@
+<div class="wrap">
+  <h2>奖罚记录</h2>
+  
+  <%= error_messages_for :employee_records %>
+
+  姓名:<%=h @employee.name %>
+  身份证:<%=h @employee.id_card_number %>
+  工号:<%=h @employee.employee_number %>
+  <br/><br/>
+    
+  <h3>奖罚记录信息</h3>
+  
+  <div class="editform">
+    
+    <% form_for @employee_record, :url => { :action => :update } do |f| %>
+      <table class="editform" width="100%" cellspacing="2" cellpadding="5">
+        <tr>
+          <th scope="row" width="40%"></th>
+          <td width="60%"></td>
+        </tr>
+        <tr>
+          <th scope="row">记录日期</th>
+          <td><%= f.date_select :record_date %></td>
+        </tr>
+        <tr>
+          <th scope="row">处理原因</th>
+          <td><%= f.text_area "reason" %></td>
+        </tr>
+        <tr>
+          <th scope="row">处理结果</th>
+          <td><%= f.text_area "result" %></td>
+        </tr>
+      </table>
+      <p class="submit">
+        <%= f.submit "Update" %>
+      </p>
+    <% end %>
+        
+  </div>
+</div>

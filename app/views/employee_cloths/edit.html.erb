@@ -1,0 +1,44 @@
+<div class="wrap">
+  <h2>服装领用</h2>
+  
+  <%= error_messages_for :employee_clothes %>
+
+  姓名:<%=h @employee.name %>
+  身份证:<%=h @employee.id_card_number %>
+  工号:<%=h @employee.employee_number %>
+  <br/><br/>
+    
+  <h3>服装领用信息</h3>
+  
+  <div class="editform">
+    
+    <% form_for @employee_cloths, :url => { :action => :update } do |f| %>
+      <table class="editform" width="100%" cellspacing="2" cellpadding="5">
+        <tr>
+          <th scope="row" width="40%"></th>
+          <td width="60%"></td>
+        </tr>
+        <tr>
+          <th scope="row">领用日期</th>
+          <td><%= f.date_select :get_date %></td>
+        </tr>
+        <tr>
+          <th scope="row">领用类别</th>
+          <td><%= f.select "get_type", Resource.lookup_codes(:clothes_type) %></td>
+        </tr>
+        <tr>
+          <th scope="row">型号</th>
+          <td><%= f.select "get_model", Resource.lookup_codes(:clothes_type) %></td>
+        </tr>
+        <tr>
+          <th scope="row">数量</th>
+          <td><%= f.text_field "get_quantity" %></td>
+        </tr>
+      </table>
+      <p class="submit">
+        <%= f.submit "Update" %>
+      </p>
+    <% end %>
+        
+  </div>
+</div>

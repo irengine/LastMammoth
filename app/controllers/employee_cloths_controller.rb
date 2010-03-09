@@ -37,4 +37,21 @@ class EmployeeClothsController < SecurityController
       render :action => 'new'
     end
   end
+
+  def edit
+    @employee_cloths =EmployeeCloth.find_by_id(params[:id])
+    @employee = @employee_cloths.employee
+  end
+
+  def update
+    @employee_cloths =EmployeeCloth.find_by_id(params[:id])
+    @employee_cloths.update_attributes(params[:employee_cloth])
+    if @employee_cloths.save
+      flash[:notice] = I18n.t("action_Save_Success")
+      redirect_to :action => "index"
+    else
+      @employee = @employee_cloths.employee
+      render :action => 'edit'
+    end
+  end
 end
