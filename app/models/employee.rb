@@ -128,7 +128,6 @@ class Employee < ActiveRecord::Base
   end
 
   def convert_string_to_date(s)
-    r = ParseDate.parsedate(s)
-    Time.local(*r)
+    s.to_date()
   end
 end
