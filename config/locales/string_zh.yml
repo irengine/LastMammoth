@@ -43,6 +43,7 @@ zh:
   loginform_UserPassword: "密码"
   loginform_LoginButton: "登录"
   loginform_InvalidPassword: "用户名/密码输入错误"
+  loginform_InvalidRole: "用户未分配角色,请联系系统管理员"
   loginform_Logout: "已退出登录"
 
   active_users_form: "在线用户"

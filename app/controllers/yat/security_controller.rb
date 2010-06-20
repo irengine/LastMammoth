@@ -6,12 +6,16 @@ class Yat::SecurityController < ApplicationController
     if request.post?
       user = User.authenticate(params[:loginUsername], params[:loginPassword])
       if user
-        session[:user_id] = user.id
-        uri = session[:original_uri]
-        session[:original_uri] = nil
-        uri = '/yat/query/dummy' if uri.nil?
-        session[:menu_data] = get_menu(user)
-        render :json => { :success => true, :uri => uri }
+        if user.roles.nil? || user.roles.empty?
+          render :json => { :success => false, :errors => { :reason => I18n.t("loginform_InvalidRole") } }
+        else
+          session[:user_id] = user.id
+          uri = session[:original_uri]
+          session[:original_uri] = nil
+          uri = '/yat/query/dummy' if uri.nil?
+          session[:menu_data] = get_menu(user)
+          render :json => { :success => true, :uri => uri }
+        end
       else
         render :json => { :success => false, :errors => { :reason => I18n.t("loginform_InvalidPassword") } }
       end
