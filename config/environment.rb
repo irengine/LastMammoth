@@ -74,3 +74,5 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
   config.action_controller.allow_forgery_protection = false
 end
+
+CalendarDateSelect.format = :hyphen_ampm
