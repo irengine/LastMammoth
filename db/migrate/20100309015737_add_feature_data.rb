@@ -19,6 +19,7 @@ class AddFeatureData < ActiveRecord::Migration
 
         Feature.create :name => "报表管理", :level => 400
         Feature.create :name => "组织机构一览", :controller_name => 'groups', :level => 410
+        Feature.create :name => "45岁以下员工统计", :controller_name => 'report', :action_name => 'ages', :level => 420
 
         Feature.create :name => "代码管理", :level => 500
         Feature.create :name => "政治面貌", :controller_name => 'resources', :code_scope => 'political_status', :level => 505
@@ -36,7 +37,9 @@ class AddFeatureData < ActiveRecord::Migration
         Feature.create :name => "查询", :level => 600
         Feature.create :name => "人员异动查询", :controller_name => 'jobs', :action_name => 'changes', :level => 610
         Feature.create :name => "驻点一览表", :controller_name => 'data', :action_name => 'index', :level => 620
-        Feature.create :name => "人员信息综合查询", :controller_name => 'query', :action_name => 'employees', :level => 630
+        Feature.create :name => "人员合同预警", :controller_name => 'expired', :action_name => 'employee', :level => 630
+        Feature.create :name => "驻点合同预警", :controller_name => 'expired', :action_name => 'group', :level => 640
+        Feature.create :name => "人员信息综合查询", :controller_name => 'query', :action_name => 'employees', :level => 650
 
         r = Role.find(1)
         r.features.delete_all

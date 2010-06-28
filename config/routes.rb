@@ -34,6 +34,11 @@ ActionController::Routing::Routes.draw do |map|
   # map.root :controller => "welcome"
   map.root :controller => "data", :action => 'index'
 
+  map.connect 'expired/employee', :controller => 'resources', :action => 'custom', :id => 'employee_expired_query'
+  map.connect 'expired/group', :controller => 'resources', :action => 'custom', :id => 'group_expired_query'
+
+  map.connect 'report/ages', :controller => 'resources', :action => 'custom', :id => 'ages_query'
+
   map.connect ':controller/custom', :action => 'custom'
 
   map.connect 'q/:name', :controller => 'query', :action => 'custom'

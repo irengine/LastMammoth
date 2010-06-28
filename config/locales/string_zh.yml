@@ -126,6 +126,10 @@ zh:
 
   job_changes_query: "人事异动查询"
   jobs_query_changes: "人事异动查询结果"
+  employee_expired_query: "人员合同预警查询"
+  group_expired_query: "驻点合同预警查询"
+  ages_query: "45岁以下员工统计"
+  resources_results: "查询结果"
 
   button_Job_Start: "上岗"
   button_Job_Change: "调岗"

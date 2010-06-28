@@ -1,0 +1,25 @@
+<div class="wrap">
+  <h2><%= I18n.t(page_title) %></h2>
+  <table class="listform">
+    <tbody>
+      <tr class="head">
+        <th></th>
+        <% for col in @result.fetch_fields %>
+          <th><%=h col.name %></th>
+        <% end %>
+      </tr>
+    </tbody>
+    <tbody>
+      <% i = 0; for row in @result; i = i + 1 %>
+        <tr class="alternate">
+          <td>
+            <%=h i %>
+          </td>
+          <% row.each do |v| %>
+            <td><%=h v %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

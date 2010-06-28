@@ -1,0 +1,51 @@
+create view v_count_ages as
+select 'All' as 'Expired', count(*) as 'CNT' from employees where year(curdate()) - year(birthdate) <=45
+union
+select concat(year(curdate()), '-1'), count(*) from employees where year(curdate()) - year(birthdate) <=45 and datediff(contract_begin_date, concat(year(curdate()), '-01-01')) >=0 and
+datediff(contract_begin_date, concat(year(curdate()), '-03-31')) <= 0
+union
+select concat(year(curdate()), '-2'), count(*) from employees where year(curdate()) - year(birthdate) <=45 and datediff(contract_begin_date, concat(year(curdate()), '-04-01')) >=0 and
+datediff(contract_begin_date, concat(year(curdate()), '-06-30')) < 0
+union
+select concat(year(curdate()), '-3'), count(*) from employees where year(curdate()) - year(birthdate) <=45 and datediff(contract_begin_date, concat(year(curdate()), '-07-01')) >=0 and
+datediff(contract_begin_date, concat(year(curdate()), '-09-30')) < 0
+union
+select concat(year(curdate()), '-4'), count(*) from employees where year(curdate()) - year(birthdate) <=45 and datediff(contract_begin_date, concat(year(curdate()), '-10-01')) >=0 and
+datediff(contract_begin_date, concat(year(curdate()), '-12-31')) <= 0
+union
+select concat(year(curdate()) + 1, '-1'), count(*) from employees where year(curdate()) + 1 - year(birthdate) <=45 and datediff(contract_begin_date, concat(year(curdate()) + 1, '-01-01')) >=0 and
+datediff(contract_begin_date, concat(year(curdate()) + 1, '-03-31')) <= 0
+union
+select concat(year(curdate()) + 1, '-2'), count(*) from employees where year(curdate()) + 1 - year(birthdate) <=45 and datediff(contract_begin_date, concat(year(curdate()) + 1, '-04-01')) >=0 and
+datediff(contract_begin_date, concat(year(curdate()) + 1, '-06-30')) < 0
+union
+select concat(year(curdate()) + 1, '-3'), count(*) from employees where year(curdate()) + 1 - year(birthdate) <=45 and datediff(contract_begin_date, concat(year(curdate()) + 1, '-07-01')) >=0 and
+datediff(contract_begin_date, concat(year(curdate()) + 1, '-09-30')) < 0
+union
+select concat(year(curdate()) + 1, '-4'), count(*) from employees where year(curdate()) + 1 - year(birthdate) <=45 and datediff(contract_begin_date, concat(year(curdate()) + 1, '-10-01')) >=0 and
+datediff(contract_begin_date, concat(year(curdate()) + 1, '-12-31')) <= 0
+union
+select concat(year(curdate()) + 2, '-1'), count(*) from employees where year(curdate()) + 2 - year(birthdate) <=45 and datediff(contract_begin_date, concat(year(curdate()) + 2, '-01-01')) >=0 and
+datediff(contract_begin_date, concat(year(curdate()) + 2, '-03-31')) <= 0
+union
+select concat(year(curdate()) + 2, '-2'), count(*) from employees where year(curdate()) + 2 - year(birthdate) <=45 and datediff(contract_begin_date, concat(year(curdate()) + 2, '-04-01')) >=0 and
+datediff(contract_begin_date, concat(year(curdate()) + 2, '-06-30')) < 0
+union
+select concat(year(curdate()) + 2, '-3'), count(*) from employees where year(curdate()) + 2 - year(birthdate) <=45 and datediff(contract_begin_date, concat(year(curdate()) + 2, '-07-01')) >=0 and
+datediff(contract_begin_date, concat(year(curdate()) + 2, '-09-30')) < 0
+union
+select concat(year(curdate()) + 2, '-4'), count(*) from employees where year(curdate()) + 2 - year(birthdate) <=45 and datediff(contract_begin_date, concat(year(curdate()) + 2, '-10-01')) >=0 and
+datediff(contract_begin_date, concat(year(curdate()) + 2, '-12-31')) <= 0
+union
+select concat(year(curdate()) + 3, '-1'), count(*) from employees where year(curdate()) + 3 - year(birthdate) <=45 and datediff(contract_begin_date, concat(year(curdate()) + 3, '-01-01')) >=0 and
+datediff(contract_begin_date, concat(year(curdate()) + 3, '-03-31')) <= 0
+union
+select concat(year(curdate()) + 3, '-2'), count(*) from employees where year(curdate()) + 3 - year(birthdate) <=45 and datediff(contract_begin_date, concat(year(curdate()) + 3, '-04-01')) >=0 and
+datediff(contract_begin_date, concat(year(curdate()) + 3, '-06-30')) < 0
+union
+select concat(year(curdate()) + 3, '-3'), count(*) from employees where year(curdate()) + 3 - year(birthdate) <=45 and datediff(contract_begin_date, concat(year(curdate()) + 3, '-07-01')) >=0 and
+datediff(contract_begin_date, concat(year(curdate()) + 3, '-09-30')) < 0
+union
+select concat(year(curdate()) + 3, '-4'), count(*) from employees where year(curdate()) + 3 - year(birthdate) <=45 and datediff(contract_begin_date, concat(year(curdate()) + 3, '-10-01')) >=0 and
+datediff(contract_begin_date, concat(year(curdate()) + 3, '-12-31')) <= 0;
+

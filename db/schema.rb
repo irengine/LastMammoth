@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100628102620) do
+ActiveRecord::Schema.define(:version => 20100628203601) do
 
   create_table "custom_queries", :force => true do |t|
     t.string   "name",                       :null => false
@@ -235,6 +235,11 @@ ActiveRecord::Schema.define(:version => 20100628102620) do
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "v_count_ages", :id => false, :force => true do |t|
+    t.binary  "Expired", :limit => 7
+    t.integer "CNT",     :limit => 8, :default => 0, :null => false
   end
 
   create_table "working_experiences", :force => true do |t|

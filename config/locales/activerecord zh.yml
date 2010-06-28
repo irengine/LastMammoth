@@ -48,6 +48,7 @@ zh:
         begin_date: "开始日期"
         end_date: "结束日期"
         change_type: "异动类型"
+        expired_days: "预警天数"
       resource:
         scope: "范围"
         key: "键"
@@ -63,6 +64,7 @@ zh:
         lv: "类型"
         type: "类型"
         parent_id: "上级组织"
+        expired_days: "预警天数"
       user:
         name: "用户名"
         full_name: "姓名"
