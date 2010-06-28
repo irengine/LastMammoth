@@ -5,9 +5,9 @@ class AddGroupData < ActiveRecord::Migration
     l = UnitBranch.create(:name=>'总公司', :lv=>2, :type=>'UnitBranch')
     l.move_to_child_of(root)
 
-    external = UnitExternal.create
+    external = UnitExternal.create(:name=>'离岗')
     external.move_to_child_of(l)
-    idel = UnitIdel.create
+    idel = UnitIdel.create(:name=>'待岗')
     idel.move_to_child_of(l)
 
     l1 = UnitGroup.create(:name=>'人事部', :lv=>4, :type=>'UnitBranch')
@@ -34,9 +34,9 @@ class AddGroupData < ActiveRecord::Migration
     c1 = UnitBranch.create(:name=>'人防一分公司', :lv=>2, :type=>'UnitBranch')
     c1.move_to_child_of(root)
 
-    external = UnitExternal.create
+    external = UnitExternal.create(:name=>'离岗')
     external.move_to_child_of(c1)
-    idel = UnitIdel.create
+    idel = UnitIdel.create(:name=>'待岗')
     idel.move_to_child_of(c1)
 
     cc11 = UnitGroup.create(:name=>'综合部', :lv=>4, :type=>'UnitBranch')
@@ -51,9 +51,9 @@ class AddGroupData < ActiveRecord::Migration
     c2 = UnitBranch.create(:name=>'人防二分公司', :lv=>2, :type=>'UnitBranch')
     c2.move_to_child_of(root)
 
-    external = UnitExternal.create
+    external = UnitExternal.create(:name=>'离岗')
     external.move_to_child_of(c2)
-    idel = UnitIdel.create
+    idel = UnitIdel.create(:name=>'待岗')
     idel.move_to_child_of(c2)
 
     cc21 = UnitGroup.create(:name=>'综合部', :lv=>4, :type=>'UnitBranch')
@@ -65,18 +65,12 @@ class AddGroupData < ActiveRecord::Migration
     cc23 = UnitGroup.create(:name=>'业务部', :lv=>4, :type=>'UnitBranch')
     cc23.move_to_child_of(c2)
 
-    cc24 = UnitGroup.create(:name=>'陆家嘴中队', :lv=>4, :type=>'UnitGroup')
-    cc24.move_to_child_of(c2)
-
-    cc241 = UnitTeam.create(:name=>'金茂驻点', :lv=>6, :type=>'UnitTeam')
-    cc241.move_to_child_of(cc24)
-
     c3 = UnitBranch.create(:name=>'人防三分公司', :lv=>2, :type=>'UnitBranch')
     c3.move_to_child_of(root)
 
-    external = UnitExternal.create
+    external = UnitExternal.create(:name=>'离岗')
     external.move_to_child_of(c3)
-    idel = UnitIdel.create
+    idel = UnitIdel.create(:name=>'待岗')
     idel.move_to_child_of(c3)
 
     cc31 = UnitGroup.create(:name=>'综合部', :lv=>4, :type=>'UnitBranch')
