@@ -1,0 +1,161 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title id='title'>Mommoth HR System</title>
+
+  <%= stylesheet_link_tag "mammoth", :media => "all" %>
+  <%= javascript_include_tag :defaults %>
+
+  <!-- ** CSS ** -->
+  <!-- base library -->
+  <%= stylesheet_link_tag "../javascripts/ext/resources/css/ext-all.css" %>
+  <!-- overrides to base library -->
+
+  <!-- ** Javascript ** -->
+  <!-- ExtJS library: base/adapter -->
+  <%= javascript_include_tag "ext/adapter/ext/ext-base.js" %>
+  <!-- ExtJS library: all widgets -->
+  <%= javascript_include_tag Rails.env.development? ? "ext/ext-all-debug.js" : "ext/ext-all.js" %>
+  <!-- overrides to library -->
+  <!-- extensions -->
+  <!-- page specific -->
+  <%= calendar_date_select_includes :silver %>
+  <script type="text/javascript">
+    _translations = {
+      "OK": "确定",
+      "Now": "现在",
+      "Today": "今天"
+    }
+    Date.weekdays = $w("日 一 二 三 四 五 六");
+    Date.months = $w("一月 二月 三月 四月 五月 六月 七月 八月 九月 十月 十一月 十二月" );
+  </script>
+
+<% javascript_tag do %>
+    Ext.onReady(function() {
+    Ext.QuickTips.init();
+
+    //Ext.getBody().on("contextmenu", Ext.emptyFn, null, {preventDefault: true});
+
+var store = new Ext.data.JsonStore({
+    idProperty : 'id',
+    fields     : ['id', 'title', 'samples'],
+    proxy      : new Ext.data.HttpProxy({
+        url      : '/data/view'
+    })
+});
+
+var dataView = new Ext.DataView({
+    autoHeight   : true,
+    frame        : true,
+    cls          : 'demos',
+    itemSelector : 'dd',
+    overClass    : 'over',
+    title        : 'Sample dataview',
+    tpl          : new Ext.XTemplate(
+        '<div id="sample-ct">',
+            '<tpl for=".">',
+            '<div><a name="{id}"></a><h2><div>{title}</div></h2>',
+            '<dl>',
+                '<tpl for="samples">',
+                    '<dd ext:url="{url}"><img src="shared/screens/{icon}"/>',
+                        '<div><h4>{text}',
+                            '<tpl if="this.isNew(values.status)">',
+                                '<span class="new-sample"> (New)</span>',
+                            '</tpl>',
+                            '<tpl if="this.isUpdated(values.status)">',
+                                '<span class="updated-sample"> (Updated)</span>',
+                            '</tpl>',
+                            '<tpl if="this.isExperimental(values.status)">',
+                                '<span class="new-sample"> (Experimental)</span>',
+                            '</tpl>',
+                        '</h4><p>{desc}</p></div>',
+                    '</dd>',
+                '</tpl>',
+            '<div style="clear:left"></div></dl></div>',
+            '</tpl>',
+        '</div>', {
+         isExperimental: function(status){
+             return status == 'experimental';
+         },
+         isNew: function(status){
+             return status == 'new';
+         },
+         isUpdated: function(status){
+             return status == 'updated';
+         }
+    }),
+    store        : store,
+
+    onClick : function(e){
+        var group = e.getTarget('h2', 3, true);
+        if(group){
+            group.up('div').toggleClass('collapsed');
+        }else {
+            var t = e.getTarget('dd', 5, true);
+            if(t && !e.getTarget('a', 2)){
+                var url = t.getAttributeNS('ext', 'url');
+                window.open(url);
+            }
+        }
+    },
+
+    onContextMenu : function(e){
+      navigatorMenu.show();
+    }
+});
+
+store.load();
+
+    var handleAction = function(action) {
+        window.location = action;
+    };
+
+   var menuBar = new Ext.Toolbar({
+            enableOverflow: true,
+            items: <%= session[:menu_data] %>
+        });
+
+    var logoutAction = function(action) {
+      window.location = '/yat/security/logout'
+    };
+
+    menuBar.add('->', {
+            text: '[<%=h @current_user.name %>]'
+        },'-',{
+            text: '[<%=h @current_group.name %>]'
+        },'-',{
+            text: '退出',
+            handler: logoutAction
+        });
+
+    var contentPanel = new Ext.Panel({
+        id:         'worksheet',
+        contentEl:  'workspace',
+        region:     'center',
+        autoScroll: true,
+        tbar:       menuBar,
+        title:      '驻点一览表',
+        items:      dataView
+    });
+
+    var vp = new Ext.Viewport({
+        layout: 'border',
+        items:  contentPanel
+    });
+});
+<% end %>
+
+  <script type="text/javascript">
+      // Path to the blank image should point to a valid location on your server
+      Ext.BLANK_IMAGE_URL = '/javascripts/ext/resources/images/default/s.gif';
+  </script>
+</head>
+<body>
+<div id="workspace">
+  <% if flash[:notice] -%>
+      <div id="notice"><%= flash[:notice] %></div>
+  <% end -%>
+  <%= yield :layout %>
+</div>
+</body>
+</html>
