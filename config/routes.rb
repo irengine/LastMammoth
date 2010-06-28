@@ -47,10 +47,16 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'query/employees', :controller => 'query', :action => 'find_employees'
   map.connect 'query/employees/:name', :controller => 'query', :action => 'find_employees'
 
+  # Query all employee changes
+  # query
+  map.connect 'jobs/changes', :controller => 'jobs', :action => 'custom', :id => 'job_changes_query'
+  # result
+  map.connect 'jobs/query_changes/:id', :controller => 'jobs', :action => 'query_changes'
+
   map.connect 'query/:action', :controller => 'query'
   map.connect 'jobs/:action', :controller => 'jobs'
   map.connect 'groups/full', :controller => 'groups', :action => 'full'
-
+ 
   map.resources :employees
   map.resources :resources
   map.resources :groups
@@ -60,7 +66,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :unit_teams
   map.resources :jobs
   map.resources :users
-  map.resources :site_contracts
+#  map.resources :site_contracts
 
 
   map.resources :employee_cloths

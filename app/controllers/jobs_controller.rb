@@ -173,6 +173,14 @@ class JobsController < SecurityController
     end
   end
 
+  def query_changes
+    name = params[:id]
+    sql = CustomQueryGenerator.generate_sql(name, params[:search])
+    sql = sql.gsub('__group', @current_group.id.to_s)
+    @result = ActiveRecord::Base.connection.execute(sql)
+  end
+
+
   private
 
   def get_branches
@@ -195,4 +203,5 @@ class JobsController < SecurityController
       false
     end
   end
+
 end

@@ -124,6 +124,9 @@ zh:
   employees_asset: "员工查询结果"
   employees_query: "员工查询"
 
+  job_changes_query: "人事异动查询"
+  jobs_query_changes: "人事异动查询结果"
+
   button_Job_Start: "上岗"
   button_Job_Change: "调岗"
   button_Job_Idel: "待岗"

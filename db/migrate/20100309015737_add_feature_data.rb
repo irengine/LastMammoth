@@ -7,11 +7,13 @@ class AddFeatureData < ActiveRecord::Migration
         Feature.create :name => "权限管理", :controller_name => 'user', :action_name => 'list_permissions', :level => 140
 
         Feature.create :name => "人员管理", :level => 200
-        Feature.create :name => "人员信息管理", :controller_name => 'employees', :action_name => 'custom', :level => 210
-        Feature.create :name => "人事异动管理", :controller_name => 'jobs', :action_name => 'custom', :level => 220
-        Feature.create :name => "服装管理", :controller_name => 'employees', :action_name => 'asset', :level => 230
-        Feature.create :name => "奖惩管理", :controller_name => 'employees', :action_name => 'asset', :level => 240
-        Feature.create :name => "缴金管理", :controller_name => 'employees', :action_name => 'asset', :level => 250
+        Feature.create :name => "人员信息录入", :controller_name => 'employees', :action_name => 'new', :level => 210
+        Feature.create :name => "人员信息维护", :controller_name => 'employees', :action_name => 'custom', :level => 220
+        Feature.create :name => "人员异动查询", :controller_name => 'jobs', :action_name => 'changes', :level => 230
+        Feature.create :name => "人事异动管理", :controller_name => 'jobs', :action_name => 'custom', :level => 240
+        Feature.create :name => "服装管理", :controller_name => 'employees', :action_name => 'asset', :level => 250
+        Feature.create :name => "奖惩管理", :controller_name => 'employees', :action_name => 'asset', :level => 260
+        Feature.create :name => "缴金管理", :controller_name => 'employees', :action_name => 'asset', :level => 270
 
         Feature.create :name => "合同管理", :level => 300
         Feature.create :name => "驻点合同管理", :controller_name => 'site_contracts', :level => 310

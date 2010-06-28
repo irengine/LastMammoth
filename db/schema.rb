@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100628040832) do
+ActiveRecord::Schema.define(:version => 20100628102620) do
 
   create_table "custom_queries", :force => true do |t|
     t.string   "name",                       :null => false
@@ -106,8 +106,6 @@ ActiveRecord::Schema.define(:version => 20100628040832) do
     t.string   "residence_address"
     t.integer  "current_working_years"
     t.integer  "total_working_years"
-    t.date     "current_working_begin_year"
-    t.date     "total_working_begin_year"
   end
 
   create_table "entries", :force => true do |t|

@@ -8,4 +8,12 @@ class JobHistory < ActiveRecord::Base
   belongs_to :target_branch, :class_name => "Group", :foreign_key => "target_branch_id"
   belongs_to :target_group, :class_name => "Group", :foreign_key => "target_group_id"
   belongs_to :target_team, :class_name => "Group", :foreign_key => "target_site_id"
+
+  def self.types
+    ts = []
+    ts << ["上岗", 'start']
+    ts << ["离岗", 'stop']
+    ts << ["待岗", 'idel']
+    ts << ["调岗", 'change']
+  end
 end

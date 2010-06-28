@@ -44,6 +44,9 @@ zh:
         status: "状态"
         group_id: "代号"
         group_name: "组织"
+        begin_date: "开始日期"
+        end_date: "结束日期"
+        change_type: "异动类型"
       resource:
         scope: "范围"
         key: "键"
