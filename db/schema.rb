@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100309094623) do
+ActiveRecord::Schema.define(:version => 20100628040832) do
 
   create_table "custom_queries", :force => true do |t|
     t.string   "name",                       :null => false
@@ -106,6 +106,8 @@ ActiveRecord::Schema.define(:version => 20100309094623) do
     t.string   "residence_address"
     t.integer  "current_working_years"
     t.integer  "total_working_years"
+    t.date     "current_working_begin_year"
+    t.date     "total_working_begin_year"
   end
 
   create_table "entries", :force => true do |t|
@@ -140,6 +142,9 @@ ActiveRecord::Schema.define(:version => 20100309094623) do
     t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "begin_date"
+    t.date     "end_date"
+    t.integer  "quantity"
   end
 
   create_table "job_histories", :force => true do |t|

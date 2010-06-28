@@ -7,6 +7,7 @@ class GroupsController < SecurityController
     @parent_groups = []
     @parent_groups << Group.find_by_id(params[:parent_id])
     @group = Group.new
+
   end
 
   def create
@@ -96,15 +97,21 @@ class GroupsController < SecurityController
     end
 
     Group.transaction do
-      @group.save
-      @group.move_to_child_of(parent)
-      if @group.kind_of?(UnitBranch)
-        external = UnitExternal.create
-        external.move_to_child_of(@group)
-        idel = UnitIdel.create
-        idel.move_to_child_of(@group)
+      if @group.save
+        @group.move_to_child_of(parent)
+        if @group.kind_of?(UnitBranch)
+          external = UnitExternal.create
+          external.move_to_child_of(@group)
+          idel = UnitIdel.create
+          idel.move_to_child_of(@group)
+        end
+        true
+      else
+        @error_group = @group
+        @group = Group.new(kvs)
+
+        false
       end
     end
-    true
   end
 end
