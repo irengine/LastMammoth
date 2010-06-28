@@ -16,7 +16,7 @@ module ActionView
     end
     
     class TabularFormBuilder < ActionView::Helpers::FormBuilder
-      (field_helpers + %w(date_select file_field) - %w(hidden_field)).each do |selector|
+      (field_helpers + %w(date_select calendar_date_select file_field) - %w(hidden_field)).each do |selector|
         src = <<-END_SRC
           def #{selector}(field, options = {})
             @template.content_tag("tr",
