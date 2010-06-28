@@ -49,10 +49,10 @@ class JobsController < SecurityController
   end
 
   def stop
+    @employee = Employee.find(params[:eid])
     if @employee.status.flag != "1"
       redirect_to :controller => 'data', :index => 'index'
     end
-    @employee = Employee.find(params[:eid])
     @job = JobHistory.new
 #    @branches = [@current_group]
   end
@@ -95,10 +95,10 @@ class JobsController < SecurityController
   end
 
   def idel
+    @employee = Employee.find(params[:eid])
     if @employee.status.flag != "1"
       redirect_to :controller => 'data', :index => 'index'
     end
-    @employee = Employee.find(params[:eid])
     @job = JobHistory.new
 #    @branches = [@current_group]
   end
@@ -141,10 +141,10 @@ class JobsController < SecurityController
   end
 
   def change
+    @employee = Employee.find(params[:eid])
     if @employee.status.flag != "1"
       redirect_to :controller => 'data', :index => 'index'
     end
-    @employee = Employee.find(params[:eid])
     @job = JobHistory.new
 #    @branches = [@current_group]
   end
