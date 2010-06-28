@@ -37,8 +37,7 @@
     //Ext.getBody().on("contextmenu", Ext.emptyFn, null, {preventDefault: true});
 
 var store = new Ext.data.JsonStore({
-    idProperty : 'id',
-    fields     : ['id', 'title', 'samples'],
+    fields     : ['branch_name', 'groups'],
     proxy      : new Ext.data.HttpProxy({
         url      : '/data/view'
     })
@@ -48,46 +47,35 @@ var dataView = new Ext.DataView({
     autoHeight   : true,
     frame        : true,
     cls          : 'demos',
-    itemSelector : 'dd',
+    itemSelector : 'div.thumb-wrap',
     overClass    : 'over',
-    title        : 'Sample dataview',
     tpl          : new Ext.XTemplate(
         '<div id="sample-ct">',
             '<tpl for=".">',
-            '<div><a name="{id}"></a><h2><div>{title}</div></h2>',
+            '<div><h2><div>{branch_name}</div></h2>',
             '<dl>',
-                '<tpl for="samples">',
-                    '<dd ext:url="{url}"><img src="shared/screens/{icon}"/>',
-                        '<div><h4>{text}',
-                            '<tpl if="this.isNew(values.status)">',
-                                '<span class="new-sample"> (New)</span>',
-                            '</tpl>',
-                            '<tpl if="this.isUpdated(values.status)">',
-                                '<span class="updated-sample"> (Updated)</span>',
-                            '</tpl>',
-                            '<tpl if="this.isExperimental(values.status)">',
-                                '<span class="new-sample"> (Experimental)</span>',
-                            '</tpl>',
-                        '</h4><p>{desc}</p></div>',
+                '<tpl for="groups">',
+                    '<dd>',
+                    '<div><h4>驻点:{group_name}, 合同起始时间:{begin_date}, 合同终止时间:{end_date}, 额定人数:{quantity}</h4></div>',
+                        '<tpl for="employees">',
+                          '<dd>',
+                            '<div class="thumb-wrap">',
+                            '<div class="thumb"><img src="{employee_url}" title="{employee_name}"></div>',
+                            '<span>{employee_name}</span>',
+                            '<span><a href="/jobs/start?eid={employee_id}">上</a> <a href="/jobs/change?eid={employee_id}">调</a> <a href="/jobs/idel?eid={employee_id}">待</a> <a href="/jobs/stop?eid={employee_id}">离</a></span></div>',
+                            '</dd>',
+                        '</tpl>',
                     '</dd>',
                 '</tpl>',
-            '<div style="clear:left"></div></dl></div>',
+                '<div style="clear:left"></div>',
+            '</dl></div>',
             '</tpl>',
-        '</div>', {
-         isExperimental: function(status){
-             return status == 'experimental';
-         },
-         isNew: function(status){
-             return status == 'new';
-         },
-         isUpdated: function(status){
-             return status == 'updated';
-         }
-    }),
+        '</div>'
+    ),
     store        : store,
 
     onClick : function(e){
-        var group = e.getTarget('h2', 3, true);
+/*        var group = e.getTarget('h2', 3, true);
         if(group){
             group.up('div').toggleClass('collapsed');
         }else {
@@ -96,11 +84,7 @@ var dataView = new Ext.DataView({
                 var url = t.getAttributeNS('ext', 'url');
                 window.open(url);
             }
-        }
-    },
-
-    onContextMenu : function(e){
-      navigatorMenu.show();
+        }*/
     }
 });
 
@@ -129,8 +113,8 @@ store.load();
         });
 
     var contentPanel = new Ext.Panel({
-        id:         'worksheet',
-        contentEl:  'workspace',
+        id:         'img-chooser-view',
+//        contentEl:  'workspace',
         region:     'center',
         autoScroll: true,
         tbar:       menuBar,

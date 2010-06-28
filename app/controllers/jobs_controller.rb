@@ -3,6 +3,9 @@ class JobsController < SecurityController
 
   def start
     @employee = Employee.find(params[:eid])
+    if @employee.status.flag == "1"
+      redirect_to :controller => 'data', :index => 'index'
+    end
     @job = JobHistory.new
 #    @branches = [@current_group]
   end
@@ -39,13 +42,16 @@ class JobsController < SecurityController
       flash[:notice] = I18n.t("action_Save_Success")
       redirect_to :action => "custom"
     else
-      @parent_groups = [parent_group]
+#      @parent_groups = [parent_group]
       render :action => 'start'
     end
 
   end
 
   def stop
+    if @employee.status.flag != "1"
+      redirect_to :controller => 'data', :index => 'index'
+    end
     @employee = Employee.find(params[:eid])
     @job = JobHistory.new
 #    @branches = [@current_group]
@@ -83,12 +89,15 @@ class JobsController < SecurityController
       flash[:notice] = I18n.t("action_Save_Success")
       redirect_to :action => "custom"
     else
-      @parent_groups = [parent_group]
+#      @parent_groups = [parent_group]
       render :action => 'stop'
     end
   end
 
   def idel
+    if @employee.status.flag != "1"
+      redirect_to :controller => 'data', :index => 'index'
+    end
     @employee = Employee.find(params[:eid])
     @job = JobHistory.new
 #    @branches = [@current_group]
@@ -126,12 +135,15 @@ class JobsController < SecurityController
       flash[:notice] = I18n.t("action_Save_Success")
       redirect_to :action => "custom"
     else
-      @parent_groups = [parent_group]
+#      @parent_groups = [parent_group]
       render :action => 'idel'
     end
   end
 
   def change
+    if @employee.status.flag != "1"
+      redirect_to :controller => 'data', :index => 'index'
+    end
     @employee = Employee.find(params[:eid])
     @job = JobHistory.new
 #    @branches = [@current_group]
@@ -168,7 +180,7 @@ class JobsController < SecurityController
       flash[:notice] = I18n.t("action_Save_Success")
       redirect_to :action => "custom"
     else
-      @parent_groups = [parent_group]
+#      @parent_groups = [parent_group]
       render :action => 'change'
     end
   end

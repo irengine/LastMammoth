@@ -9,14 +9,13 @@ class AddFeatureData < ActiveRecord::Migration
         Feature.create :name => "人员管理", :level => 200
         Feature.create :name => "人员信息录入", :controller_name => 'employees', :action_name => 'new', :level => 210
         Feature.create :name => "人员信息维护", :controller_name => 'employees', :action_name => 'custom', :level => 220
-        Feature.create :name => "人员异动查询", :controller_name => 'jobs', :action_name => 'changes', :level => 230
         Feature.create :name => "人事异动管理", :controller_name => 'jobs', :action_name => 'custom', :level => 240
         Feature.create :name => "服装管理", :controller_name => 'employees', :action_name => 'asset', :level => 250
         Feature.create :name => "奖惩管理", :controller_name => 'employees', :action_name => 'asset', :level => 260
         Feature.create :name => "缴金管理", :controller_name => 'employees', :action_name => 'asset', :level => 270
 
-        Feature.create :name => "合同管理", :level => 300
-        Feature.create :name => "驻点合同管理", :controller_name => 'site_contracts', :level => 310
+#        Feature.create :name => "合同管理", :level => 300
+#        Feature.create :name => "驻点合同管理", :controller_name => 'site_contracts', :level => 310
 
         Feature.create :name => "报表管理", :level => 400
         Feature.create :name => "组织机构一览", :controller_name => 'groups', :level => 410
@@ -35,7 +34,9 @@ class AddFeatureData < ActiveRecord::Migration
         Feature.create :name => "服装型号", :controller_name => 'resources', :code_scope => 'clothes_model', :level => 555
 
         Feature.create :name => "查询", :level => 600
-        Feature.create :name => "人员查询", :controller_name => 'query', :action_name => 'employees', :level => 610
+        Feature.create :name => "人员异动查询", :controller_name => 'jobs', :action_name => 'changes', :level => 610
+        Feature.create :name => "驻点一览表", :controller_name => 'data', :action_name => 'index', :level => 620
+        Feature.create :name => "人员信息综合查询", :controller_name => 'query', :action_name => 'employees', :level => 630
 
         r = Role.find(1)
         r.features.delete_all

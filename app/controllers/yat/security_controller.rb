@@ -12,7 +12,7 @@ class Yat::SecurityController < ApplicationController
           session[:user_id] = user.id
           uri = session[:original_uri]
           session[:original_uri] = nil
-          uri = '/yat/query/dummy' if uri.nil?
+          uri = '/' if uri.nil?
           session[:menu_data] = get_menu(user)
           render :json => { :success => true, :uri => uri }
         end
