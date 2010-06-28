@@ -34,6 +34,81 @@
 Ext.onReady(function() {
     Ext.QuickTips.init();
 
+    //Ext.getBody().on("contextmenu", Ext.emptyFn, null, {preventDefault: true});
+
+    var store = new Ext.data.JsonStore({
+        idProperty : 'id',
+        fields     : ['id', 'title', 'samples'],
+        proxy      : new Ext.data.HttpProxy({
+          url      : '/data/view'
+        })
+    });
+
+
+var person_view = new Ext.DataView({
+    autoHeight   : true,
+    frame        : true,
+    cls          : 'demos',
+    itemSelector : 'dd',
+    overClass    : 'over',
+    title        : 'Sample dataview',
+    tpl          : new Ext.XTemplate(
+        '<div id="sample-ct">',
+            '<tpl for=".">',
+            '<div><a name="{id}"></a><h2><div>{title}</div></h2>',
+            '<dl>',
+                '<tpl for="samples">',
+                    '<dd ext:url="{url}"><img src="shared/screens/{icon}"/>',
+                        '<div><h4>{text}',
+                            '<tpl if="this.isNew(values.status)">',
+                                '<span class="new-sample"> (New)</span>',
+                            '</tpl>',
+                            '<tpl if="this.isUpdated(values.status)">',
+                                '<span class="updated-sample"> (Updated)</span>',
+                            '</tpl>',
+                            '<tpl if="this.isExperimental(values.status)">',
+                                '<span class="new-sample"> (Experimental)</span>',
+                            '</tpl>',
+                        '</h4><p>{desc}</p></div>',
+                    '</dd>',
+                '</tpl>',
+            '<div style="clear:left"></div></dl></div>',
+            '</tpl>',
+        '</div>', {
+         isExperimental: function(status){
+             return status == 'experimental';
+         },
+         isNew: function(status){
+             return status == 'new';
+         },
+         isUpdated: function(status){
+             return status == 'updated';
+         }
+    }),
+    store        : store,
+
+    onClick : function(e){
+        var group = e.getTarget('h2', 3, true);
+        if(group){
+            group.up('div').toggleClass('collapsed');
+        }else {
+            var t = e.getTarget('dd', 5, true);
+            if(t && !e.getTarget('a', 2)){
+                var url = t.getAttributeNS('ext', 'url');
+                window.open(url);
+            }
+        }
+    },
+
+    onContextMenu : function(e){
+      navigatorMenu.show();
+    }
+    
+
+});
+    store.load();
+
+
     var navigatorPanel = new Ext.tree.TreePanel({
         region: 'west',
         collapsible: true,
@@ -49,21 +124,52 @@ Ext.onReady(function() {
         }),
         root: new Ext.tree.AsyncTreeNode(),
         rootVisible: false,
+
+
+        contextMenu: new Ext.menu.Menu({
+          items: [{
+            id: 'delete-node',
+            text: 'Delete Node'
+          }],
+          listeners: {
+            itemclick: function(item) {
+                switch (item.id) {
+                    case 'delete-node':
+                        var n = item.parentMenu.contextNode;
+                        if (n.parentNode) {
+                            n.remove();
+                        }
+                        break;
+                }
+            }
+          }
+        }),
+
         listeners: {
             click: function(n) {
                 //Ext.getCmp('my-grid').store.load({params: {id: n.attributes.id}});
                 //Ext.Msg.alert('Navigation Tree Click', 'You clicked: "' + n.attributes.id + '"');
-                Ext.getDom('search_Employee__group_id').value = n.attributes.id;
-                Ext.getDom('search_Employee__group_name').value = n.attributes.text;
-            }
+                if(Ext.getDom('search_Employee__group_id'))
+                  Ext.getDom('search_Employee__group_id').value = n.attributes.id;
+                if(Ext.getDom('search_Employee__group_name'))
+                  Ext.getDom('search_Employee__group_name').value = n.attributes.text;
+          },
+          contextmenu: function(node, e) {
+//          Register the context node with the menu so that a Menu Item's handler function can access
+//          it via its parentMenu property.
+            node.select();
+            var c = node.getOwnerTree().contextMenu;
+            c.contextNode = node;
+            c.showAt(e.getXY());
+          }
         }
     });
 
     var handleAction = function(action) {
-        if(action == '/query/employees')
+//       if(action == '/query/employees')
             window.location = action;
-        else
-            Ext.getCmp('worksheet').load({url: action});
+//       else
+//           Ext.getCmp('worksheet').load({url: action});
     };
 
     var menuBar = new Ext.Toolbar({
@@ -84,13 +190,15 @@ Ext.onReady(function() {
             handler: logoutAction
         });
 
-    var contentPanel = {
+    var contentPanel = new Ext.Panel({
         id: 'worksheet',
         contentEl: 'workspace',
         region: 'center',
         autoScroll: true,
-        tbar: menuBar
-    };
+        tbar: menuBar,
+//        title: 'nothing',
+//        items      : person_view
+    });
 
     var vp = new Ext.Viewport({
         layout: 'border',
