@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  validates_presence_of :name, :contacts, :address
+  validates_presence_of :name #:contacts, :address
 
   GROUP_TYPES = ['总部', '单位', '部门/中队', '驻点']
 
