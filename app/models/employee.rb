@@ -35,8 +35,8 @@ class Employee < ActiveRecord::Base
   validates_presence_of :id_card_number,                     #身份证号
   :name,                                #姓名
   :gender,                              #性别
-  :license_number,                      #从业号
-  :employee_number,                     #工号
+#  :license_number,                      #从业号
+#  :employee_number,                     #工号
   :height,                              #身高
   :mobile_number,                       #手机
   :political_status,                    #政治面貌
@@ -47,11 +47,11 @@ class Employee < ActiveRecord::Base
   :home_address ,                       #家庭住址
   :residence_address                    #户口地址
 
-  validates_uniqueness_of :license_number, :employee_number, :id_card_number
+  validates_uniqueness_of :id_card_number
 
   validates_format_of :id_card_number, :with => /\A([1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3})|([1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[A-Z]))\Z/
 
-  validates_numericality_of :license_number, :employee_number, :height, :current_working_years, :total_working_years
+  validates_numericality_of :license_number, :employee_number, :height, :total_working_years
 
   def before_save
     self.birthdate = get_birthdate_from_id_card_number

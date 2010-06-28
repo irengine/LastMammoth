@@ -19,8 +19,9 @@
       <%= f.select :employee_type_id, Resource.lookup_ids(:employee_type) %>
       <%= f.text_field :home_address %>
       <%= f.text_field :residence_address %>
-      <%= f.text_field :current_working_years %>
       <%= f.text_field :total_working_years %>
+      <%= f.calendar_date_select :contract_begin_date %>
+      <%= f.calendar_date_select :contract_end_date %>
       <%= f.select :training_status_id, Resource.lookup_ids(:training_status) %>
       <%= f.text_area :remarks, :rows => 5 %>
       <%= f.file_field :photo_file, :accept => 'image/png,image/gif,image/jpeg' %>

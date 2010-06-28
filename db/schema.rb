@@ -104,7 +104,8 @@ ActiveRecord::Schema.define(:version => 20100628102620) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "residence_address"
-    t.integer  "current_working_years"
+    t.date     "contract_begin_date"
+    t.date     "contract_end_date"
     t.integer  "total_working_years"
   end
 

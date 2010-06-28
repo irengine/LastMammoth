@@ -33,7 +33,7 @@ class EmployeesController < SecurityController
 
     if Employee.create_employee(@employee, @photo, @working_experiences)
       flash[:notice] = I18n.t("action_Save_Success")
-      redirect_to :action => "index"
+      redirect_to :action => "new"
     else
       (5-@working_experiences.length).times {
         w = WorkingExperience.new
